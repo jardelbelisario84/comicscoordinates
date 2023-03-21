@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ContainerStyled = styled.div`
-  background: ${props => props.theme['gray-900']} 
+  background: ${(props) => props.theme['gray-900']} 
   padding: 2.5rem 0 7.5rem;
   width: 100%;
   max-width: 1120px;

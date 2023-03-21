@@ -1,8 +1,9 @@
-import { HeaderContainer, HeaderContent, HeaderLogo, HeaderMenu } from "./style";
+import { NavLink } from 'react-router-dom'
+
+import { HeaderContainer, HeaderContent, HeaderLogo, HeaderMenu } from './style'
 
 export function Header() {
   return (
-
     <HeaderContainer>
       <HeaderContent>
         <HeaderLogo>
@@ -12,15 +13,12 @@ export function Header() {
         </HeaderLogo>
 
         <HeaderMenu>
-          <li className="active">Quadrinhos</li>
-          <li>Personagens</li>
-          <li>Mapa</li>
-          <li>Lista de endereços</li>
+          <NavLink to="/">Quadrinhos</NavLink>
+          <NavLink to="/characters">Personagens</NavLink>
+          <NavLink to="/maps">Mapa</NavLink>
+          <NavLink to="/address">Histórico de endereços</NavLink>
         </HeaderMenu>
-          
       </HeaderContent>
     </HeaderContainer>
- 
-   
-  );
+  )
 }
