@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const SBanner = styled.div`
- width: 100%;
+  width: 100%;
   height: 100%;
 
   background: url("./banners/banner01_comics_coordinates.jpg");
@@ -34,6 +34,7 @@ export const SContainer = styled.div`
   h2 {
     font-size: 2rem;
     margin-top: 2rem;
+
     /* padding: 2rem 0 2rem 0; */
   }
 `

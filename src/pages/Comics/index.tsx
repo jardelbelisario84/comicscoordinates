@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react'
 import { Banner } from '../../components/Banner'
 import { Loading } from '../../components/Loading/Loading'
 import Modal from '../../components/Modal'
+import { Container } from '../../components/layout/Container'
 import api from '../../service/axios'
 import {
   CardCharacter,
   CardCharacterBackground,
   CardCharacterBody,
   CardContent,
-  HomeContent,
   Pagination,
   PaginationItem,
 } from './style'
@@ -51,9 +51,9 @@ export default function Comics() {
         <Loading />
       ) : (
         <div>
-          <Banner titlePage="Listagem de quadrinhos" />
-          <HomeContent>
-            {/* <h1>Listagem de quadrinhos</h1> */}
+          <Banner titlePage="Listagem de Quadrinhos" />
+          <Container>
+            <p>Vários quadrinhos para você conhecer</p>
             {characters.length > 0 && (
               <CardContent>
                 {characters.map((character: any, key: number) => (
@@ -79,7 +79,7 @@ export default function Comics() {
               <PaginationItem>7</PaginationItem>
               <PaginationItem>8</PaginationItem>
             </Pagination>
-          </HomeContent>
+          </Container>
         </div>
       )}
 
