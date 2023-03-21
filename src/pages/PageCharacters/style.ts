@@ -8,6 +8,69 @@ type PropsPaginationItem = {
   bgPagintationActive?: boolean
 }
 
+export const HomeContainer = styled.div`
+  background: ${(props) => props.theme['gray-900']} 
+  padding: 2.5rem 0 7.5rem;
+  width: 100%;
+  height: 100%;
+`
+
+export const HomeContent = styled.div`
+  background: ${(props) => props.theme['gray-900']};
+  width: 100%;
+  max-width: 1120px;
+  height: 100%;
+  margin: 5rem auto;
+  padding: 0 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const HomeBanner = styled.div`
+  width: 100%;
+  height: 100%;
+
+  background: url("./banners/banner01_comics_coordinates.jpg");
+  background-color: rgba(0,0,0,0.5);
+  background-position: bottom: ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* padding: 20rem 0; */
+
+  margin-top: -150px;
+
+
+`
+export const HomeBannerContent = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20rem 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  & span {
+    font-size: 4rem;
+    font-weight: bold;
+    background-color: ${(props) => props.theme['red-900']};
+    color: ${(props) => props.theme['gray-100']};
+  }
+  & h1 {
+    font-size: 4rem;
+  }
+`
+
+export const BannerTitle = styled.div`
+  display: flex;
+`
+
 export const TitleComics = styled.div`
   font-size: 4rem;
   font-weight: bold;
@@ -26,20 +89,6 @@ export const BannerSubtitle = styled.h2`
   font-size: 1.5rem;
   color: #fff;
   margin: 1rem 0;
-`
-
-export const HomeContent = styled.div`
-  background: ${(props) => props.theme['gray-900']};
-  width: 100%;
-  max-width: 1120px;
-  height: 100%;
-  margin: 5rem auto;
-  padding: 0 1.5rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 `
 
 export const HomeTitle = styled.h1`
@@ -134,4 +183,63 @@ export const PaginationItem = styled.div<PropsPaginationItem>`
 
 export const OverlayStyled = styled.div`
   background-color: ${(props) => props.theme['green-500']};
+`
+
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export const ModalHeader = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
+
+export const ModalBody = styled.div`
+  display: flex;
+  justify-content: flex-start;
+
+  flex: 1;
+
+  & img {
+    width: 250px;
+    height: 350px;
+    margin-right: 10px;
+  }
+`
+
+export const ModalBodyContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  & ul {
+    list-style: none;
+  }
+
+  & li {
+    list-style: none;
+  }
+  & h2 {
+    margin-bottom: 10px;
+  }
+
+  & li:last-child {
+    margin-top: 40px;
+  }
+`
+
+export const ModalTitle = styled.h1`
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: ${(props) => props.theme['red-900']};
+`
+
+export const ModalHeaderButton = styled.button`
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background-color: ${(props) => props.theme['red-500']};
 `
