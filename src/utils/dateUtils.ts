@@ -5,11 +5,6 @@ export function formatDate(dateParams: string) {
     parseISO(dateParams),
     'dd/MM/yyyy',
   )
-
-
-  const event = new Date()
-  console.log(event.toISOString())
-
   return resultDate;
 }
 
