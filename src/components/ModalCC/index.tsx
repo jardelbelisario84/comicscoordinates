@@ -1,4 +1,4 @@
-// import Modal from 'react-modal'
+/* eslint-disable prettier/prettier */
 import { Modal, ModalBody, ModalContent, ModalHeader, ModalHeaderButton } from './style'
 
 type Props = {
