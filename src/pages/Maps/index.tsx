@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 
 import { ModalCComponent } from '../../components/ModalCC';
 import api from '../../service/axios';
+import { dateToISOString } from '../../utils/dateUtils';
 import { MapBody, MapContent, ModalButtonAction, ModalButtonCancel, ModalContent, ModalFooter } from './style';
 
 const containerStyle = {
@@ -103,7 +104,7 @@ function MapsPage() {
       }
 
       setAddress(response.data.results[0].formatted_address)
-      setAddressArray([...addressArray, {latLng: center, address: response.data.results[0].formatted_address}])
+      setAddressArray([...addressArray, {latLng: center, address: response.data.results[0].formatted_address, date: dateToISOString()}])
 
    
  
@@ -126,7 +127,7 @@ function MapsPage() {
     
     if(storedArray) {    
       const parseAddress = JSON.parse(storedArray)
-      parseAddress.push({latLng: center, address: address})
+      parseAddress.push({latLng: center, address: address, date: dateToISOString()})
       localStorage.setItem("address",JSON.stringify(parseAddress));
     }else{   
       localStorage.setItem("address",JSON.stringify(addressArray));

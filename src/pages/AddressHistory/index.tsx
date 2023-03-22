@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Container } from '../../components/layout/Container';
+import { formatDate } from '../../utils/dateUtils';
 import { AddressContainer, AddressList } from './style';
 
 export default function AddressHistory() {
@@ -31,7 +32,7 @@ export default function AddressHistory() {
             <thead>
               <tr>
                 <th>Endereço</th>
-                
+                <th>Enviado em:</th>
               </tr>
             </thead>
             <tbody>
@@ -41,6 +42,9 @@ export default function AddressHistory() {
               <tr key={key}>
                 <td>
                 {address.address}
+                </td>
+                <td>
+                  {formatDate(address.date)}
                 </td>
                 
               </tr>

@@ -28,9 +28,9 @@ export default function Comics() {
       const response = await api.get('/v1/public/characters')
       setCharacters(response.data.data.results)
       setLoading(false)
-      console.log(response.data.data.results)
     } catch (error) {
-      console.log(error)
+      setLoading(false)
+
     }
   }
 

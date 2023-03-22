@@ -54,7 +54,7 @@ export const AddressList = styled.div`
       line-height: 1.6;
 
       &:first-child {
-        width: 70%;
+        width: 80%;
         padding-left: 1.5rem;
       }
       &:last-child {
