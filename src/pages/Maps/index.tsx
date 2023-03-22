@@ -98,11 +98,6 @@ function MapsPage() {
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBEydqnAzNae6JDOStWGCxvg3R3o8KFXPk`,
       )
       
-
-      if(activeMarker){
-        // setMarkers([...markers, {lat, lng}])
-      }
-      
       setAddress(response.data.results[0].formatted_address)
       setAddressArray([...addressArray, {
         latLng: {lat, lng}, 
