@@ -42,6 +42,7 @@ function MapsPage() {
   const [data, setData] = useState<any>()
   const [markers, setMarkers] = useState<any>([])
   const [address, setAddress] = useState('')
+  const [addressArray, setAddressArray] = useState<any>([])
   const [modal, setModal] = useState(false)
 
   const openModal: any = (param: any) => {
@@ -62,11 +63,33 @@ function MapsPage() {
     }
   }
 
+  const getMarkersStorages = async () => {
+    const storedArray = localStorage.getItem("address");
+    if(storedArray) {    
+
+      const parseAddress = JSON.parse(storedArray)
+      console.log("parseAddress", parseAddress)
+
+      parseAddress.forEach((element: any) => {
+        markers.push(element.latLng)
+        console.log(element.latLng)
+      });
+      
+      console.log("markers", markers)
+
+    }
+  }
+
   useEffect(() => {
     getComics()
+    getMarkersStorages()
   }, [])
 
   const handleClickMap = async (markerPoint: any) => {
+
+
+
+    
     const lat = markerPoint.latLng.lat()
     const lng = markerPoint.latLng.lng()
 
@@ -79,18 +102,37 @@ function MapsPage() {
         lng,
       }
 
+      setAddress(response.data.results[0].formatted_address)
+      setAddressArray([...addressArray, {latLng: center, address: response.data.results[0].formatted_address}])
+
+   
+ 
+
       const markerPointer = center
       setMarkers([...markers, markerPointer])
 
-      console.log(response.data.results[0].formatted_address)
-      setAddress(response.data.results[0].formatted_address)
+      // console.log(response.data.results[0].formatted_address)
+      
+
       setModal(true)
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleSaveAddres = async () => {
+  const handleSaveAddress = async () => {
+
+    const storedArray = localStorage.getItem("address");
+    
+    if(storedArray) {    
+      const parseAddress = JSON.parse(storedArray)
+      parseAddress.push({latLng: center, address: address})
+      localStorage.setItem("address",JSON.stringify(parseAddress));
+    }else{   
+      localStorage.setItem("address",JSON.stringify(addressArray));
+    }
+
+
     toast.success('Enviado com sucesso!', {
       position: 'top-right',
       autoClose: 5000,
@@ -176,7 +218,7 @@ function MapsPage() {
                 </ModalButtonCancel>
                 <ModalButtonAction
                   className="primary"
-                  onClick={handleSaveAddres}
+                  onClick={handleSaveAddress}
                 >
                   ENVIAR QUADRINHOS PARA ENDEREÇO NO MAPA
                 </ModalButtonAction>

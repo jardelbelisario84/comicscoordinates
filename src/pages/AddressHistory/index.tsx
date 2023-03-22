@@ -1,7 +1,26 @@
-import { Container } from '../../components/layout/Container'
-import { AddressContainer, AddressList } from './style'
+import { useEffect, useState } from 'react';
+
+import { Container } from '../../components/layout/Container';
+import { AddressContainer, AddressList } from './style';
 
 export default function AddressHistory() {
+
+
+  const [ addressStorage, setAddressStorage ] = useState<any>();
+  
+  const getAddress = () => {
+
+    const storedArray: any = localStorage.getItem("address");
+
+    const parseAddress = JSON.parse(storedArray)
+    setAddressStorage(parseAddress);
+  }
+
+
+  useEffect(() => {
+    getAddress();
+  },[])
+
   return (
     <Container>
       <AddressContainer>
@@ -12,75 +31,21 @@ export default function AddressHistory() {
             <thead>
               <tr>
                 <th>Endereço</th>
-                <th>Estado</th>
-                <th>Cidade</th>
-                <th>Data</th>
+                
               </tr>
             </thead>
             <tbody>
-              <tr>
+
+              {addressStorage?.map((address:any, key: number) => (
+
+              <tr key={key}>
                 <td>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-                  et, doloribus atque consequatur explicabo
+                {address.address}
                 </td>
-                <td>MA</td>
-                <td>Imperatriz</td>
-                <td>20/03/2023</td>
+                
               </tr>
-              <tr>
-                <td>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-                  et, doloribus atque consequatur explicabo
-                </td>
-                <td>MA</td>
-                <td>Imperatriz</td>
-                <td>20/03/2023</td>
-              </tr>
-              <tr>
-                <td>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-                  et, doloribus atque consequatur explicabo
-                </td>
-                <td>MA</td>
-                <td>Imperatriz</td>
-                <td>20/03/2023</td>
-              </tr>
-              <tr>
-                <td>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-                  et, doloribus atque consequatur explicabo
-                </td>
-                <td>MA</td>
-                <td>Imperatriz</td>
-                <td>20/03/2023</td>
-              </tr>
-              <tr>
-                <td>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-                  et, doloribus atque consequatur explicabo
-                </td>
-                <td>MA</td>
-                <td>Imperatriz</td>
-                <td>20/03/2023</td>
-              </tr>
-              <tr>
-                <td>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-                  et, doloribus atque consequatur explicabo
-                </td>
-                <td>MA</td>
-                <td>Imperatriz</td>
-                <td>20/03/2023</td>
-              </tr>
-              <tr>
-                <td>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-                  et, doloribus atque consequatur explicabo
-                </td>
-                <td>MA</td>
-                <td>Imperatriz</td>
-                <td>20/03/2023</td>
-              </tr>
+              ))}
+              
             </tbody>
           </table>
         </AddressList>
