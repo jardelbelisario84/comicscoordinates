@@ -8,7 +8,7 @@ const publicKey = '6d76902f4dfad1f399067d2340f613e0'
 const hashParam = md5(timestampParans + privateKey + publicKey)
 
 const api = axios.create({
-  baseURL: 'http://gateway.marvel.com',
+  baseURL: 'https://gateway.marvel.com',
   params: {
     ts: timestampParans,
     apikey: publicKey,
