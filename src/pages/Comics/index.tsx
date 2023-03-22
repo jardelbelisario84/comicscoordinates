@@ -1,18 +1,11 @@
 import { useEffect, useState } from 'react'
 
 import { Banner } from '../../components/Banner'
+import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
 import Modal from '../../components/Modal'
-import { Container } from '../../components/layout/Container'
 import api from '../../service/axios'
-import {
-  CardCharacter,
-  CardCharacterBackground,
-  CardCharacterBody,
-  CardContent,
-  Pagination,
-  PaginationItem,
-} from './style'
+import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, Pagination, PaginationItem } from './style'
 
 export default function Comics() {
   const [characters, setCharacters] = useState<any>({})
@@ -37,6 +30,7 @@ export default function Comics() {
       setLoading(false)
       console.log(response.data.data.results)
     } catch (error) {
+      setLoading(false)
       console.log(error)
     }
   }

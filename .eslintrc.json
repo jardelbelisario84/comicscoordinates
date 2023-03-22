@@ -1,3 +1,7 @@
 {
-  "extends": "@rocketseat/eslint-config/react"
+  "extends": "@rocketseat/eslint-config/react",
+  "endOfLine": "off",
+  "prettier/prettier": 0,
+  "rules": { "prettier/prettier": [ "error", { "endOfLine":"auto", "printWidth": 80, "trailingComma": "es5", "semi": false, "doubleQuote":true, "jsxSingleQuote": true, "singleQuote": false, "useTabs": false, "tabWidth":4 } ] }
+
 }
