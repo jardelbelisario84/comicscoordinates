@@ -148,7 +148,7 @@ function MapsPage() {
               {markers.map((marker: any, key: number) => (
                 <Marker
                   position={marker}
-                  icon={`./markerMarvel2.png`}
+                  icon={`./markerMarvel.png`}
                   key={key}
                 />
               ))}
