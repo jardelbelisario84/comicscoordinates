@@ -1,6 +1,6 @@
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import axios from 'axios';
-import { memo, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { ModalCComponent } from '../../components/ModalCC';
@@ -41,7 +41,12 @@ function MapsPage() {
   // }, [])
 
   const [data, setData] = useState<any>()
+  
   const [markers, setMarkers] = useState<any>([])
+  const [markerPointer, setMarkerPointer] = useState<any>({})
+  const [activeMarker, setActiveMarker] = useState(false)
+
+
   const [address, setAddress] = useState('')
   const [addressArray, setAddressArray] = useState<any>([])
   const [modal, setModal] = useState(false)
@@ -56,6 +61,8 @@ function MapsPage() {
   }
 
   const getComics = async () => {
+
+   
     try {
       const response = await api.get('/v1/public/comics/82970')
       setData(response.data.data.results[0])
@@ -64,22 +71,17 @@ function MapsPage() {
     }
   }
 
-  const getMarkersStorages = async () => {
+  const getMarkersStorages =  useCallback(() => {
     const storedArray = localStorage.getItem("address");
     if(storedArray) {    
 
       const parseAddress = JSON.parse(storedArray)
-      console.log("parseAddress", parseAddress)
 
       parseAddress.forEach((element: any) => {
         markers.push(element.latLng)
-        console.log(element.latLng)
       });
-      
-      console.log("markers", markers)
-
     }
-  }
+  },[markers])
 
   useEffect(() => {
     getComics()
@@ -87,52 +89,46 @@ function MapsPage() {
   }, [])
 
   const handleClickMap = async (markerPoint: any) => {
-
-
-
-    
+   
     const lat = markerPoint.latLng.lat()
     const lng = markerPoint.latLng.lng()
-
+    setMarkerPointer({lat, lng})
     try {
       const response = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBEydqnAzNae6JDOStWGCxvg3R3o8KFXPk`,
       )
-      const center = {
-        lat,
-        lng,
-      }
-
-      setAddress(response.data.results[0].formatted_address)
-      setAddressArray([...addressArray, {latLng: center, address: response.data.results[0].formatted_address, date: dateToISOString()}])
-
-   
- 
-
-      const markerPointer = center
-      setMarkers([...markers, markerPointer])
-
-      // console.log(response.data.results[0].formatted_address)
       
 
-      setModal(true)
+      if(activeMarker){
+        // setMarkers([...markers, {lat, lng}])
+      }
+      
+      setAddress(response.data.results[0].formatted_address)
+      setAddressArray([...addressArray, {
+        latLng: {lat, lng}, 
+        address: response.data.results[0].formatted_address, 
+        date: dateToISOString()
+      }])
+
+     setModal(true)
     } catch (error) {
       console.log(error)
     }
   }
 
   const handleSaveAddress = async () => {
-
-    const storedArray = localStorage.getItem("address");
     
+    const storedArray = localStorage.getItem("address");
     if(storedArray) {    
       const parseAddress = JSON.parse(storedArray)
-      parseAddress.push({latLng: center, address: address, date: dateToISOString()})
+      parseAddress.push({latLng: markerPointer, address: address, date: dateToISOString()})
       localStorage.setItem("address",JSON.stringify(parseAddress));
+
+      setActiveMarker(true)
+      setMarkers([...markers, markerPointer])
     }else{   
       localStorage.setItem("address",JSON.stringify(addressArray));
     }
-
 
     toast.success('Enviado com sucesso!', {
       position: 'top-right',
@@ -189,12 +185,15 @@ function MapsPage() {
             {/* Child components, such as markers, info windows, etc. */}
             <>
               {markers.map((marker: any, key: number) => (
+                
                 <Marker
                   position={marker}
                   icon={`./markerMarvel.png`}
                   key={key}
                 />
+              
               ))}
+
             </>
           </GoogleMap>
         </>
