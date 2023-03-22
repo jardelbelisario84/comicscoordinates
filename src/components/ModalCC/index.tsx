@@ -1,11 +1,5 @@
 // import Modal from 'react-modal'
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalHeader,
-  ModalHeaderButton,
-} from './style'
+import { Modal, ModalBody, ModalContent, ModalHeader, ModalHeaderButton } from './style'
 
 type Props = {
   openModal: () => void

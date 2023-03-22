@@ -6,14 +6,7 @@ import { toast } from 'react-toastify'
 
 import { ModalCComponent } from '../../components/ModalCC'
 import api from '../../service/axios'
-import {
-  MapBody,
-  MapContent,
-  ModalButtonAction,
-  ModalButtonCancel,
-  ModalContent,
-  ModalFooter,
-} from './style'
+import { MapBody, MapContent, ModalButtonAction, ModalButtonCancel, ModalContent, ModalFooter } from './style'
 
 import 'react-toastify/dist/ReactToastify.css'
 
