@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
+      <BrowserRouter basename='/'>
         <RouterMain />
       </BrowserRouter>
       <GlobalStyle />
