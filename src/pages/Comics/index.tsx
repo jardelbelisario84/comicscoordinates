@@ -6,9 +6,20 @@ import Modal from '../../components/Modal'
 import api from '../../service/axios'
 import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, Pagination, PaginationItem } from './style'
 
+
+type ComicProps = {
+  title: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  dates: []
+}
+
+
 export default function Comics() {
-  const [characters, setCharacters] = useState<any>({})
-  const [character, setCharacter] = useState<any>({})
+  const [characters, setCharacters] = useState<ComicProps[]>([])
+  const [character, setCharacter] = useState<ComicProps | {}>({})
   const [modal, setModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -25,6 +36,8 @@ export default function Comics() {
     try {
       setLoading(true)
       const response = await api.get('/v1/public/comics')
+      console.log(response)
+      console.log(response.data.data.results)
       setCharacters(response.data.data.results)
       setLoading(false)
     } catch (error) {
@@ -48,7 +61,7 @@ export default function Comics() {
             <p>Vários quadrinhos para você conhecer</p>
             {characters.length > 0 && (
               <CardContent>
-                {characters.map((character: any, key: number) => (
+                {characters.map((character: ComicProps, key: number) => (
                   <CardCharacter key={key} onClick={() => openModal(character)}>
                     <CardCharacterBackground
                       bgCardCharacter={`${character.thumbnail.path}.${character.thumbnail.extension}`}
