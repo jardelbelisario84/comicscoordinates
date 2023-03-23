@@ -13,7 +13,7 @@ import './utils/ensure-basename'
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter basename='/'>
+      <BrowserRouter>
         <RouterMain />
       </BrowserRouter>
       <GlobalStyle />
