@@ -1,12 +1,12 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  background: ${(props) => props.theme['gray-900']};
+  background: ${(props) => props.theme["gray-900"]};
   z-index: 9999;
   position: fixed;
   top: 0;
-`
+`;
 
 export const HeaderContent = styled.div`
   display: flex;
@@ -18,7 +18,16 @@ export const HeaderContent = styled.div`
   height: 100%;
   margin: auto;
   padding: 1rem;
-`
+
+  @media (max-width: 26.563rem) {
+    max-width: 100%;
+    flex-direction: column;
+  }
+  @media (max-width: 48rem) {
+    max-width: 100%;
+    flex-direction: column;
+  }
+`;
 
 export const HeaderLogo = styled.div`
   display: flex;
@@ -44,10 +53,11 @@ export const HeaderLogo = styled.div`
     justify-content: start;
     list-style: none;
   }
-`
+`;
 
 export const HeaderMenu = styled.div`
   flex: 1;
+
   display: flex;
   justify-content: flex-start;
   list-style: none;
@@ -74,6 +84,22 @@ export const HeaderMenu = styled.div`
   }
 
   a.active {
-    color: ${(props) => props.theme['red-900']};
+    color: ${(props) => props.theme["red-900"]};
   }
-`
+
+  @media (max-width: 28.625rem) {
+
+    margin-top: 1rem;
+    a {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (min-width: 28.625rem) and (max-width: 48rem) {
+    a {
+      
+      font-size: 1.1rem;
+    }
+    margin-top: 0.85rem;
+  }
+`;
