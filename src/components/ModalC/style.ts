@@ -1,12 +1,14 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 type PropsIsOpen = {
-  isOpen: boolean
-}
+  isOpen: boolean;
+};
 
 export const Modal = styled.div<PropsIsOpen>`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
   width: 100wh;
   height: 100vh;
 
@@ -26,25 +28,42 @@ export const Modal = styled.div<PropsIsOpen>`
   transition: 2s all linear;
 
   z-index: 9999;
-`
+`;
 
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: ${(props) => props.theme['gray-900']};
+  background-color: ${(props) => props.theme["gray-900"]};
 
   padding: 1.5rem;
 
-  box-shadow: 2px 5px 10px ${(props) => props.theme['gray-900']};
+  box-shadow: 2px 5px 10px ${(props) => props.theme["gray-900"]};
 
   z-index: 99999;
-`
+
+  @media (max-width: 28.625rem) {
+
+    width: 400px;
+    padding: 1rem;
+    margin: 3rem;
+  }
+
+  @media (min-width: 28.625rem) and (max-width: 48rem) {
+    width: 100%;
+    max-width: 25rem;
+  }
+
+  @media (min-width: 48rem) and (max-width: 64rem) {
+    width: 100%;
+    max-width: 600px;
+  }
+`;
 
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: flex-end;
-`
+`;
 
 export const ModalBody = styled.div`
   display: flex;
@@ -52,12 +71,35 @@ export const ModalBody = styled.div`
 
   flex: 1;
 
-  & img {
-    width: 250px;
-    height: 350px;
+ img {
+
+    width: 100%;
+    height: 21.875rem;
     margin-right: 10px;
   }
-`
+
+  @media (max-width: 28.625rem) {
+    
+    width: 25rem;
+    padding: 1rem;
+
+   img {
+    width: 5.625rem;
+    height: 10.875rem;
+    margin-right: 10px;
+  }
+  }
+
+  @media (min-width: 28.625rem) and (max-width: 48rem) {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (min-width: 48rem) and (max-width: 64rem) {
+    width: 100%;
+    max-width: 600px;
+  }
+`;
 
 export const ModalBodyContent = styled.div`
   display: flex;
@@ -78,13 +120,13 @@ export const ModalBodyContent = styled.div`
   & li:last-child {
     margin-top: 40px;
   }
-`
+`;
 
 export const ModalTitle = styled.h1`
   font-size: 1.4rem;
   margin-bottom: 2rem;
-  color: ${(props) => props.theme['red-900']};
-`
+  color: ${(props) => props.theme["red-900"]};
+`;
 
 export const ModalHeaderButton = styled.button`
   width: 20px;
@@ -97,13 +139,13 @@ export const ModalHeaderButton = styled.button`
   cursor: pointer;
   border-radius: 4px;
   border: none;
-  background-color: ${(props) => props.theme['red-500']};
+  background-color: ${(props) => props.theme["red-500"]};
 
   :hover {
-    background-color: ${(props) => props.theme['red-900']};
+    background-color: ${(props) => props.theme["red-900"]};
   }
   :focus {
     outline: 0;
     box-shadow: none;
   }
-`
+`;

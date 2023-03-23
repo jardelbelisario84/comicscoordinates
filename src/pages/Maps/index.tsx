@@ -41,6 +41,7 @@ function MapsPage() {
   // }, [])
 
   const [data, setData] = useState<any>()
+  const [instructions, setInstructions] = useState(false)
   
   const [markers, setMarkers] = useState<any>([])
   const [markerPointer, setMarkerPointer] = useState<any>({})
@@ -89,7 +90,7 @@ function MapsPage() {
   }, [])
 
   const handleClickMap = async (markerPoint: any) => {
-   
+    setInstructions(false)
     const lat = markerPoint.latLng.lat()
     const lng = markerPoint.latLng.lng()
     setMarkerPointer({lat, lng})
@@ -111,7 +112,7 @@ function MapsPage() {
     }
   }
 
-  const handleSaveAddress = async () => {
+  const handleSaveAddress = () => {
     
     const storedArray = localStorage.getItem("address");
     if(storedArray) {    
@@ -123,13 +124,14 @@ function MapsPage() {
       setMarkers([...markers, markerPointer])
     }else{   
       localStorage.setItem("address",JSON.stringify(addressArray));
+      setMarkers([...markers, markerPointer])
     }
 
     toast.success('Enviado com sucesso!', {
       position: 'top-right',
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
-      closeOnClick: true,
+      closeOnClick: false,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
@@ -139,29 +141,36 @@ function MapsPage() {
     closeModal()
   }
 
+
+  const handleClickInstructions =  () => {
+   
+   
+     setModal(true)
+     setInstructions(true)
+  }
+
   return (
     <>
       {isLoaded && (
         <>
-          <MapContent>
+          <MapContent onClick={handleClickInstructions}>
             <h1>INSTRUÇÕES</h1>
-            <MapBody>
+            {/* <MapBody>
               <div>
                 <p>1. Clique em qualquer ponto para selecionar um endereço</p>
               </div>
               <div>
                 <p>
-                  2. Após ma janela pop-up aparecer, verifique se o endereço
-                  está correto.
+                  2. Verifique se o endereço
+                  está correto na janela POPUP que irá aparecer.
                 </p>
               </div>
               <div>
                 <p>
-                  3. Confirme o envio e veja a localidade no histórico de
-                  endereços.
+                  3. Clique no botão "ENVIAR QUADRINHOS PARA O ENDEREÇO NO MAPA"
                 </p>
               </div>
-            </MapBody>
+            </MapBody> */}
           </MapContent>
 
           <GoogleMap
@@ -218,6 +227,48 @@ function MapsPage() {
                   ENVIAR QUADRINHOS PARA ENDEREÇO NO MAPA
                 </ModalButtonAction>
               </ModalFooter>
+            </ModalContent>
+          </ModalCComponent>
+        )}
+      </div>
+
+      <div>
+        {instructions && (
+          <ModalCComponent
+            openModal={openModal}
+            closeModal={closeModal}
+            modal={modal}
+            setModal={setModal}
+            data={address}
+            title="INSTRUÇÕES"
+          >
+            <ModalContent>
+             
+              <MapBody>
+                <div>
+                  <img src="./markerMarvel.png" alt="" />
+                  <p>1. Clique em qualquer ponto para selecionar um endereço</p>
+                </div>
+                <div>
+                <img src="./modal.jpg" alt="" />
+                  <p>
+                    2. Verifique se o endereço
+                    está correto na janela POPUP que irá aparecer.
+                  </p>
+                </div>
+                <div>
+                <img src="./enviar.jpg" alt="" />
+                <p>
+                  3. Clique no botão "ENVIAR QUADRINHOS PARA O ENDEREÇO NO MAPA"
+                </p>
+              </div>
+                <div>
+                <img src="./historico.jpg" alt="" />
+                <p>
+                  4. Acesse o menu "Histórico de Endereços" para visualizar todos os endereços que enviou lista de quadrinhos
+                </p>
+              </div>
+            </MapBody>
             </ModalContent>
           </ModalCComponent>
         )}

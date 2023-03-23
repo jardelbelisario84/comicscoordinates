@@ -29,23 +29,53 @@ export const Modal = styled.div<PropsIsOpen>`
 `
 
 export const ModalContent = styled.div`
+  width: 100%;
+  max-width: 600px;
+  
+  
   display: flex;
   flex-direction: column;
 
   background-color: ${(props) => props.theme['gray-900']};
-  width: 100%;
-  max-width: 600px;
-
+  
   padding: 1.5rem;
-
+  
   box-shadow: 2px 5px 10px ${(props) => props.theme['gray-900']};
 
+  border-radius: 8px;
+  
   z-index: 99999;
+  
+
+  
+
+  @media (max-width: 28.625rem) {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+   
+  }
+
+  @media (min-width: 28.625rem) and (max-width: 48rem) {
+    width: 100%;
+    max-width: 400px;
+    
+  }
+
+  @media (min-width: 48rem) and (max-width: 64rem) {
+    width: 100%;
+    max-width: 600px;
+  }
 `
 
 export const ModalHeader = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 1rem;
+    color: ${(props) => props.theme['white']};
+  }
 `
 
 export const ModalBody = styled.div`

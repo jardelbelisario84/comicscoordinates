@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Banner } from '../../components/Banner'
 import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
-import { ModalComponent } from '../../components/ModalC'
+import { ModalCComponent } from '../../components/ModalCC'
 import api from '../../service/axios'
 import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, Pagination, PaginationItem } from './style'
 
@@ -59,7 +59,7 @@ export default function Comics() {
                       bgCardCharacter={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                     />
                     <CardCharacterBody>
-                      <h1>{character.title}</h1>
+                      <h1>{character.name}</h1>
                     </CardCharacterBody>
                   </CardCharacter>
                 ))}
@@ -82,13 +82,16 @@ export default function Comics() {
 
       <div>
         {character && (
-          <ModalComponent
+          <ModalCComponent
             openModal={openModal}
             closeModal={closeModal}
             modal={modal}
             setModal={setModal}
             data={character}
-          />
+          >
+
+            oi
+          </ModalCComponent>
         )}
       </div>
     </>

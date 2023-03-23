@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from "styled-components";
 
 export const MapContent = styled.div`
-  width: 800px;
+  /* width: 800px; */
   height: auto;
 
   display: flex;
@@ -9,54 +9,94 @@ export const MapContent = styled.div`
   justify-content: center;
   align-items: center;
 
-  background: ${(props) => props.theme['gray-900']};
+  background: ${props => props.theme['red-900']};
+  border: 8px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
 
   position: fixed;
-  top: 70px;
-  left: calc(50% - 400px);
-  margin-top: 20px;
+  top: 12%;
+  right: 1%;
 
   z-index: 555;
 
-  padding: 1rem;
+  padding: 0.85rem;
 
   border-radius: 8px;
 
   h1 {
-    font-size: 0.95rem;
+    font-size: 0.75rem;
   }
-`
+
+  @media (max-width: 28.625rem) {  
+    top: 20%;
+  right: 1%;
+    h1 {
+      font-size: 0.55rem;
+    }
+  }
+
+  @media (min-width: 28.625rem) and (max-width: 48rem) {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (min-width: 48rem) and (max-width: 64rem) {
+    width: 100%;
+    max-width: 600px;
+  }
+`;
 
 export const MapBody = styled.div`
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
 
-  background: ${(props) => props.theme['gray-900']};
-
-  padding: 1rem;
   div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      width: 70px;
+      height: 70px;
+    }
+
+    p {
+      font-size: 0.75rem;
+      text-align: start;
+    }
+  }
+  
+
+  /* @media (max-width: 28.625rem) {
+
+    padding: 0.85rem;
+    div {
     width: 40%;
-    margin: 0 20px;
+    margin: 0 10px;
   }
-  p {
-    font-size: 0.75rem;
-  }
-`
+    p {
+      
+  
+      font-size: 0.55rem;
+    }
+  } */
+`;
 
 export const AddressContainer = styled.div`
-  background: ${(props) => props.theme['gray-900']};
+  background: ${(props) => props.theme["gray-900"]};
   padding: 2.5rem 0 7.5rem;
   width: 100%;
   height: 100%;
   h1 {
     font-size: 1.2rem;
-    color: ${(props) => props.theme['gray-100']};
-    font-family: 'Marvel';
+    color: ${(props) => props.theme["gray-100"]};
+    font-family: "Marvel";
   }
-`
+`;
 
 export const AddressList = styled.div`
   flex: 1;
@@ -72,10 +112,10 @@ export const AddressList = styled.div`
 
     th {
       flex: 1;
-      background-color: ${(props) => props.theme['gray-600']};
+      background-color: ${(props) => props.theme["gray-600"]};
       padding: 1rem;
       text-align: left;
-      color: ${(props) => props.theme['gray-100']};
+      color: ${(props) => props.theme["gray-100"]};
       font-size: 0.875rem;
       line-height: 1.6;
 
@@ -90,12 +130,12 @@ export const AddressList = styled.div`
     }
 
     td {
-      background-color: ${(props) => props.theme['gray-700']};
-      border-top: 4px solid ${(props) => props.theme['gray-800']};
+      background-color: ${(props) => props.theme["gray-700"]};
+      border-top: 4px solid ${(props) => props.theme["gray-800"]};
 
       padding: 1rem;
 
-      color: ${(props) => props.theme['gray-100']};
+      color: ${(props) => props.theme["gray-100"]};
       font-size: 0.875rem;
       line-height: 1.6;
 
@@ -108,7 +148,7 @@ export const AddressList = styled.div`
       }
     }
   }
-`
+`;
 
 export const ModalContent = styled.div`
   width: 100%;
@@ -130,7 +170,7 @@ export const ModalContent = styled.div`
     text-align: center;
     line-height: 1.5rem;
   }
-`
+`;
 
 const CommonStyles = css`
   border: 0;
@@ -146,7 +186,7 @@ const CommonStyles = css`
     outline: 0;
     box-shadow: none;
   }
-`
+`;
 export const ModalFooter = styled.div`
   width: 100%;
 
@@ -155,21 +195,21 @@ export const ModalFooter = styled.div`
   align-items: center;
 
   padding: 1rem;
-`
+`;
 export const ModalButtonCancel = styled.button`
   ${CommonStyles};
-  background-color: ${(props) => props.theme['gray-500']};
+  background-color: ${(props) => props.theme["gray-500"]};
   color: ${(props) => props.theme.white};
   :hover {
-    background-color: ${(props) => props.theme['gray-600']};
+    background-color: ${(props) => props.theme["gray-600"]};
   }
-`
+`;
 export const ModalButtonAction = styled.button`
   ${CommonStyles};
-  background-color: ${(props) => props.theme['red-500']};
+  background-color: ${(props) => props.theme["red-500"]};
   color: ${(props) => props.theme.white};
 
   :hover {
-    background-color: ${(props) => props.theme['red-900']};
+    background-color: ${(props) => props.theme["red-900"]};
   }
-`
+`;

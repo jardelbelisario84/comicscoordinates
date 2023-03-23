@@ -5,6 +5,7 @@ type Props = {
   openModal: () => void
   closeModal: () => void
   data: any
+  title?: string
   modal: boolean
   setModal: any
   children: any
@@ -16,6 +17,7 @@ export function ModalCComponent({
   data,
   modal,
   setModal,
+  title,
   children,
 }: Props) {
   return (
@@ -28,6 +30,7 @@ export function ModalCComponent({
           >
             <ModalContent>
               <ModalHeader>
+                <h1>{title}</h1>
                 <ModalHeaderButton onClick={closeModal}>X</ModalHeaderButton>
               </ModalHeader>
 
