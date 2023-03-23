@@ -50,7 +50,7 @@ export const ModalContent = styled.div`
   
 
   @media (max-width: 28.625rem) {
-    width: 100%;
+    width: 90%;
     max-width: 400px;
     padding: 1rem;
    

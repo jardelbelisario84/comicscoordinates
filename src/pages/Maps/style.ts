@@ -195,13 +195,44 @@ export const ModalFooter = styled.div`
   align-items: center;
 
   padding: 1rem;
+
+  @media (max-width: 28.625rem) {  
+    flex-direction: column-reverse;
+
+    h1 {
+      font-size: 0.55rem;
+    }
+  }
+
+  @media (min-width: 28.625rem) and (max-width: 48rem) {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (min-width: 48rem) and (max-width: 64rem) {
+    width: 100%;
+    max-width: 600px;
+  }
+
 `;
+
 export const ModalButtonCancel = styled.button`
   ${CommonStyles};
   background-color: ${(props) => props.theme["gray-500"]};
   color: ${(props) => props.theme.white};
   :hover {
     background-color: ${(props) => props.theme["gray-600"]};
+  }
+
+  @media (max-width: 28.625rem) {  
+    
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1rem;
+    width: 100%;
+    
   }
 `;
 export const ModalButtonAction = styled.button`
