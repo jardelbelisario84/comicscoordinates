@@ -1,7 +1,7 @@
-if (!window.location.pathname.includes("/")) {
+if (!window.location.pathname.includes("https://comicscoordinates.vercel.app/")) {
   window.history.replaceState(
     '',
     '',
-    "/" + window.location.pathname
+    "https://comicscoordinates.vercel.app/" + window.location.pathname
   );
 }
