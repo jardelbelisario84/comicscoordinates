@@ -8,6 +8,8 @@ import { defaultTheme } from './styles/themes/default'
 
 import 'react-toastify/dist/ReactToastify.css'
 
+import './utils/ensure-basename'
+
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
