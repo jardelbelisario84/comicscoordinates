@@ -7,16 +7,17 @@ import Comics from './pages/Comics'
 import { Home } from './pages/Home'
 import MapsPage from './pages/Maps'
 
-export function Router() {
+export function RouterMain() {
   return (
-    <Routes>
-      <Route path="/" element={<DefaultLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/comics" element={<Comics />} />
-        <Route path="/characters" element={<Characters />} />
-        <Route path="/maps" element={<MapsPage />} />
-        <Route path="/address" element={<AddressHistory />} />
-      </Route>
-    </Routes>
+      <Routes>
+
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/comics" element={<Comics />} />
+          <Route path="/characters" element={<Characters />} />
+          <Route path="/maps" element={<MapsPage />} />
+          <Route path="/address" element={<AddressHistory />} />
+        </Route>
+      </Routes>
   )
 }

@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { ThemeProvider } from 'styled-components'
 
-import { Router } from './Router'
+import { RouterMain } from './Router'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <Router />
+        <RouterMain />
       </BrowserRouter>
       <GlobalStyle />
       <ToastContainer />
