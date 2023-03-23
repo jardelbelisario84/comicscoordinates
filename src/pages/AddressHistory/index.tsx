@@ -23,6 +23,8 @@ export default function AddressHistory() {
   },[])
 
   return (
+    <div>
+       {/* <Banner /> */}
     <Container>
       <AddressContainer>
         <h1> Endereços com recebimento de quadrinhos </h1>
@@ -38,8 +40,8 @@ export default function AddressHistory() {
             <tbody>
 
               {addressStorage?.map((address:any, key: number) => (
-
-              <tr key={key}>
+                
+                <tr key={key}>
                 <td>
                 {address.address}
                 </td>
@@ -55,5 +57,6 @@ export default function AddressHistory() {
         </AddressList>
       </AddressContainer>
     </Container>
+                </div>
   )
 }

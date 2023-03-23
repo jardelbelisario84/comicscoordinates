@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { Banner } from '../../components/Banner'
 import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
 import { ModalCComponent } from '../../components/ModalCC'
@@ -44,9 +43,10 @@ export default function Comics() {
         <Loading />
       ) : (
         <div>
-          <Banner titlePage="Listagem de Personagens" />
+          {/* <Banner /> */}
 
           <Container>
+            <h1>Listagem de Personagens</h1>
             <p>
               Fique viciado em uma porção generosa de heróis e vilões da humilde
               House of Ideas!

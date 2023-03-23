@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { Banner } from '../../components/Banner'
 import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
 import Modal from '../../components/Modal'
@@ -43,8 +42,9 @@ export default function Comics() {
         <Loading />
       ) : (
         <div>
-          <Banner titlePage="Listagem de Quadrinhos" />
+          {/* <Banner /> */}
           <Container>
+            <h1>Listagem de Quadrinhos</h1>
             <p>Vários quadrinhos para você conhecer</p>
             {characters.length > 0 && (
               <CardContent>

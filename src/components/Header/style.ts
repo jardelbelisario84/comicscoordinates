@@ -62,8 +62,8 @@ export const HeaderMenu = styled.div`
   justify-content: flex-start;
   list-style: none;
 
-  cursor: pointer;
-
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+  
   a {
     margin: 0 10px;
     font-family: Marvel;
@@ -81,6 +81,7 @@ export const HeaderMenu = styled.div`
   a:focus {
     outline: 0px;
     box-shadow: none;
+    background-color: none;
   }
 
   a.active {

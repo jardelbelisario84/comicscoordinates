@@ -13,7 +13,8 @@ export function Header() {
         </HeaderLogo>
 
         <HeaderMenu>
-          <NavLink to="/">Quadrinhos</NavLink>
+          <NavLink to="/">Início</NavLink>
+          <NavLink to="/comics">Quadrinhos</NavLink>
           <NavLink to="/characters">Personagens</NavLink>
           <NavLink to="/maps">Mapa</NavLink>
           <NavLink to="/address">Histórico de endereços</NavLink>

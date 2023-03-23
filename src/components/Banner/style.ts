@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const SBanner = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100wh;
+  height: 100vh;
 
   background: url("./banners/banner01_comics_coordinates.jpg");
   background-color: rgba(0, 0, 0, 0.5);
@@ -52,7 +52,7 @@ export const SContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 10rem 0 8rem 0;
+  padding: 0;
 
   background-color: rgba(0, 0, 0, 0.5);
 
@@ -108,13 +108,13 @@ export const STitle = styled.div`
   padding: 0 0.5rem;
 
   h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     border: 1px solid ${(props) => props.theme["red-900"]};
     padding: 0 0 0 0.5rem;
   }
 
   span {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
     background-color: ${(props) => props.theme["red-900"]};
     color: ${(props) => props.theme["gray-100"]};
@@ -151,5 +151,39 @@ export const STitle = styled.div`
     span {
       font-size: 2.5rem;
     }
+  }
+`;
+
+export const SBody = styled.div`
+  width: 100%;
+  max-width: 36rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+
+  @media (max-width: 28.625rem) {
+    width: 100%;
+    max-width: 19rem;
+  }
+
+  @media (min-width: 28.625rem) and (max-width: 48rem) {
+    width: 100%;
+  max-width: 22rem;
+  }
+
+  @media (min-width: 48rem) and (max-width: 64rem) {
+    width: 100%;
+    max-width: 36rem;
   }
 `;
