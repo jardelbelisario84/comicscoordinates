@@ -24,15 +24,13 @@ export const HeaderContent = styled.div`
   }
   @media (min-width: 26.563rem) and (max-width: 48rem) {
     max-width: 100%;
-     div {
-       max-width: 100%;
-
-     }
+    div {
+      max-width: 100%;
+    }
   }
 `;
 
 export const ButtonIcon = styled.button`
-
   display: none;
   justify-content: center;
   align-items: center;
@@ -45,7 +43,7 @@ export const ButtonIcon = styled.button`
 
   :hover {
     svg {
-      stroke: red
+      stroke: red;
     }
   }
 
@@ -63,12 +61,10 @@ export const ButtonIcon = styled.button`
   @media (max-width: 26.563rem) {
     display: flex;
     max-width: 100%;
-
   }
   @media (min-width: 26.563rem) and (max-width: 48rem) {
     display: flex;
     max-width: 100%;
-
   }
 `;
 
@@ -76,15 +72,32 @@ export const HeaderLogo = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border: 1px red solid;
 
   margin-right: 1rem;
 
-  & img {
-    width: 70px;
+  a {
+    text-decoration: none;
+
+    img {
+    width: 180px;
+    cursor: pointer;
+  }
   }
 
-  & h1 {
+  a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  a:focus {
+    outline: 0px;
+    box-shadow: none;
+    background-color: none;
+  }
+
+ 
+
+  h1 {
     text-transform: uppercase;
     font-size: 1.4rem;
 
@@ -148,18 +161,14 @@ export const HeaderMenuDesktop = styled.div`
   }
 `;
 
-
-
 type VisibleMenuMobile = {
   visible: boolean;
-}
+};
 export const HeaderContentMobile = styled.div<VisibleMenuMobile>`
-  display: ${props => props.visible ? "block" : "none"};
-  
+  display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
 export const HeaderMenuMobile = styled.div`
- 
   width: 100%;
 
   display: none;
@@ -172,7 +181,6 @@ export const HeaderMenuMobile = styled.div`
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
   a {
-    
     width: 100%;
 
     display: block;
@@ -207,7 +215,6 @@ export const HeaderMenuMobile = styled.div`
     display: block;
 
     margin-top: 1rem;
-    
   }
 
   @media (min-width: 28.625rem) and (max-width: 48rem) {

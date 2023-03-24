@@ -3,6 +3,10 @@ import { useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { NavLink } from 'react-router-dom'
 import { ButtonIcon, HeaderContainer, HeaderContent, HeaderContentMobile, HeaderLogo, HeaderMenuDesktop, HeaderMenuMobile } from './style'
+
+import logotipo from '../../assets/logotipo.svg'
+
+
 export function Header() {
 
   const [menuMobile, setMenuMobile] = useState(false)
@@ -15,8 +19,9 @@ export function Header() {
     <HeaderContainer>
       <HeaderContent>
         <HeaderLogo>
-          <img src="./marvel.svg" alt="" />
-          <h1>API WEB</h1>
+            <NavLink to='/'>
+              <img src={logotipo} alt="" />
+            </NavLink>
         </HeaderLogo>
 
         <ButtonIcon onClick={handleMenuMobile}> 
