@@ -14,4 +14,7 @@ export const ContainerStyled = styled.div`
 
   margin: 5rem auto;
   padding: 4rem 1.5rem;
+
+ 
+
 `;

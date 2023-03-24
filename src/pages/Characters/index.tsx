@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
 import { ModalCComponent } from '../../components/ModalCC'
+import { Pagination } from '../../components/Pagination'
+import { Container } from '../../components/layout/Container'
 import api from '../../service/axios'
-import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, ModalBody, ModalContent, ModalImage, Pagination, PaginationItem } from './style'
+import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, ContainerCharacter, ModalBody, ModalContent, ModalImage } from './style'
 
 export default function Comics() {
   const [characters, setCharacters] = useState<any>({})
@@ -43,14 +44,15 @@ export default function Comics() {
         <Loading type={"bars"} color="#fff"/>
       ) : (
         <div>
-          {/* <Banner /> */}
-
-          <Container>
-            <h1>Listagem de Personagens</h1>
-            <p>
-              Fique viciado em uma porção generosa de heróis e vilões da humilde
-              House of Ideas!
-            </p>
+         <Container>
+            <ContainerCharacter>
+              <h1>Listagem de Personagens</h1>
+              <p>
+                Fique viciado em uma porção generosa de heróis e vilões da humilde
+                House of Ideas!
+              </p>
+            </ContainerCharacter>
+            
             {characters.length > 0 && (
               <CardContent>
                 {characters.map((character: any, key: number) => (
@@ -66,16 +68,8 @@ export default function Comics() {
               </CardContent>
             )}
 
-            <Pagination>
-              <PaginationItem bgPagintationActive={true}>1</PaginationItem>
-              <PaginationItem>2</PaginationItem>
-              <PaginationItem>3</PaginationItem>
-              <PaginationItem>4</PaginationItem>
-              <PaginationItem>5</PaginationItem>
-              <PaginationItem>6</PaginationItem>
-              <PaginationItem>7</PaginationItem>
-              <PaginationItem>8</PaginationItem>
-            </Pagination>
+            <Pagination />
+          
           </Container>
         </div>
       )}
