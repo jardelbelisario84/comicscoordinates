@@ -8,7 +8,7 @@ type Props = {
   totalItems: any,
   paginate: any,
   maxPagesVisible: number,
-  pageAction: number
+  pageAction?: number
 }
 
 export function Pagination({
@@ -27,8 +27,6 @@ export function Pagination({
   const firstPageInRange = Math.max(2, lastPageInRange - maxPagesVisible + 3);
 
   useEffect(() => {
-
-    setCurrentPage(pageAction)
     
     const pages = [];
 
@@ -52,19 +50,19 @@ export function Pagination({
       
           <PaginationContainer>
 
-          <PaginationItem  onClick={() => handlePageClick(1)} bgPagintationActive={pageAction === currentPage }>    
+          <PaginationItem  onClick={() => handlePageClick(1)}>    
                 1
           </PaginationItem>
 
           {visiblePages.map((number: number) => (
 
-              <PaginationItem key={number}  onClick={() => handlePageClick(number)} bgPagintationActive={number === currentPage }>    
+              <PaginationItem key={number}  onClick={() => handlePageClick(number)}>    
                 {number}
               </PaginationItem>
 
           ))}
           ...
-          <PaginationItem  onClick={() => handlePageClick(totalPages)}>    
+          <PaginationItem  onClick={() => handlePageClick(1)}>    
           {totalPages}
           </PaginationItem>
              
