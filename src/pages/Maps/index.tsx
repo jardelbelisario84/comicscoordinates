@@ -3,7 +3,7 @@ import axios from 'axios';
 import { memo, useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import { ModalCComponent } from '../../components/ModalCC';
+import { Modal } from '../../components/Modal';
 import { dateToISOString } from '../../utils/dateUtils';
 import { MapBody, MapContent, ModalButtonAction, ModalButtonCancel, ModalContent, ModalFooter } from './style';
 
@@ -172,7 +172,7 @@ function MapsPage() {
 
       <div>
         
-          <ModalCComponent
+          <Modal
             openModal={openModal}
             closeModal={closeModal}
             modal={modal}
@@ -193,13 +193,13 @@ function MapsPage() {
                 </ModalButtonAction>
               </ModalFooter>
             </ModalContent>
-          </ModalCComponent>
+          </Modal>
         
       </div>
 
       <div>
         {instructions && (
-          <ModalCComponent
+          <Modal
             openModal={openModal}
             closeModal={closeModal}
             modal={modal}
@@ -233,7 +233,7 @@ function MapsPage() {
               </div>
             </MapBody>
             </ModalContent>
-          </ModalCComponent>
+          </Modal>
         )}
       </div>
     </>

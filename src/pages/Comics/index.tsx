@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { Card } from '../../components/Card'
 import { Loading } from '../../components/Loading/Loading'
-import { ModalCComponent } from '../../components/ModalCC'
+import { Modal } from '../../components/Modal'
 import { Pagination } from '../../components/Pagination'
 import { Container } from '../../components/layout/Container'
 import api from '../../service/axios'
@@ -133,7 +133,7 @@ export default function Comics() {
 
       <div>
         {comic && (
-          <ModalCComponent
+          <Modal
             openModal={openModal}
             closeModal={closeModal}
             modal={modal}
@@ -168,7 +168,7 @@ export default function Comics() {
               </ModalBody>
             </ModalContent>
             
-          </ModalCComponent>
+          </Modal>
         )}
       </div>
     </>
