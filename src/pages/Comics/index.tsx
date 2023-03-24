@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 
+import { Card } from '../../components/Card'
 import { Loading } from '../../components/Loading/Loading'
 import { ModalCComponent } from '../../components/ModalCC'
 import { Pagination } from '../../components/Pagination'
 import { Container } from '../../components/layout/Container'
 import api from '../../service/axios'
-import { CardComic, CardComicBackground, CardComicBody, CardContent, ContainerComic, ModalBody, ModalContent, ModalImage } from './style'
+import { CardContent, ContainerComic, ModalBody, ModalContent, ModalImage } from './style'
 
 
 
@@ -87,14 +88,7 @@ export default function Comics() {
             {comics.length > 0 && (
               <CardContent>
                 {comics.map((comic: any, key: number) => (
-                  <CardComic key={key} onClick={() => openModal(comic)}>
-                    <CardComicBackground
-                      bgCardComic={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                    />
-                    <CardComicBody>
-                      <h1>{comic.title}</h1>
-                    </CardComicBody>
-                  </CardComic>
+                  <Card onClick={() => openModal(comic)} data={comic} key={key}/>
                 ))}
               </CardContent>
             )}
