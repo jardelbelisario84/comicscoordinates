@@ -1,4 +1,4 @@
-<img src="./src/assets/logotipo.svg" width="250">
+<img src="https://user-images.githubusercontent.com/14846583/227642020-f27b6645-b00e-4514-92b7-fb15d240ce7f.svg" width="250">
 
 # Índice
 
@@ -110,41 +110,41 @@ As seguintes tecnologias estão sendo utilizadas neste projeto até o momento:
 
 <a id="tela-home"></a>
 1. Tela inicial com banner ilustrativo
-<img src="./src/assets/Screenshot_home_page.jpg">
+<img src="https://user-images.githubusercontent.com/14846583/227641159-fc777425-ed1d-4eba-9e98-dcc0127722bf.jpg">
 
 
 ---
 <a id="tela-quadrinhos"></a>
 2. Tela de listagem de quadrinhos ( comics )
-<img src="./src/assets/Screenshot_comics.jpg">
+<img src="https://user-images.githubusercontent.com/14846583/227640869-e71e1a04-5782-4d07-839f-333c4199be92.jpg">
 
 2.1 Quadrinho Modal
-<img src="./src/assets/Screenshot_comic_modal.jpg">
+<img src="https://user-images.githubusercontent.com/14846583/227641285-578b552e-ecaa-4b99-8f39-592a3a620b72.jpg">
 
 ---
 <a id="tela-personagens"></a>
 3. Tela de listagem de personagens ( characters )
 
-<img src="./src/assets/Screenshot_characters.jpg">
+<img src="https://user-images.githubusercontent.com/14846583/227641438-f3136966-0eb1-499f-a911-ec978e46c6d6.jpg">
 
 
 3.1 Personagem Modal
-<img src="./src/assets/Screenshot_comic_modal.jpg">
+<img src="https://user-images.githubusercontent.com/14846583/227641633-767f2406-0550-4fec-a26c-2d855bd49882.jpg">
 
 ---
 <a id="tela-maps"></a>
 4. Tela Mapa com possibilidade de marcação de endereços e envio da lista de quadrinhos 
 
-<img src="./src/assets/Screenshot_maps_instructions.jpg">
+<img src=".https://user-images.githubusercontent.com/14846583/227641828-5f689a60-7d05-4f88-8b3b-13ca99cc2689.jpg">
 
 4.1 Instruções Modal
-<img src="./src/assets/Screenshot_character_modal.jpg">
+<img src="https://user-images.githubusercontent.com/14846583/227641941-9ad7100d-2a77-499a-9d61-a4c9e6f83aad.jpg">
 
 ---
 <a id="tela-historico-endereco"></a>
 5. Tela de histórico de endereços aos quais foram enviados os quadrinhos
 
-<img src="./src/assets/Screenshot_address_historic.jpg">
+<img src="https://user-images.githubusercontent.com/14846583/227641732-ac49cdcf-ebb3-4405-b206-3ef65db6b510.jpg">
 
 
 ---
