@@ -130,8 +130,7 @@ export const PaginationItem = styled.div<PropsPaginationItem>`
 `;
 export const ModalContent = styled.div`
   width: 100%;
-  height: 100%;
-  max-height: 450px;
+  height: 400px;
 
   display: flex;
   justify-content: space-between;
@@ -146,8 +145,8 @@ export const ModalContent = styled.div`
   }
 
   @media (max-width: 32rem) {
-    height: 100%;
-    overflow-y: auto;
+
+    height: 450px;
 
     display: flex;
     flex-direction: column;
@@ -155,6 +154,8 @@ export const ModalContent = styled.div`
 
   @media (min-width: 32rem) and (max-width: 48rem) {
     height: 100%;
+    height: 450px;
+
     overflow-y: auto;
 
     display: flex;
@@ -243,7 +244,8 @@ export const ModalBody = styled.div<Props>`
         margin-top: -45px;
         margin-left: -15px;
 
-        background-color: ${(props) => props.theme["red-300"]};
+        background-color: ${(props) => props.theme["gray-300"]};
+        color: ${(props) => props.theme["gray-900"]};
         border-radius: 4px;
 
         text-align: center;
@@ -260,6 +262,7 @@ export const ModalBody = styled.div<Props>`
 
   @media (max-width: 48rem) {
     width: 100%;
+    
     overflow-y: auto;
 
     h2 {

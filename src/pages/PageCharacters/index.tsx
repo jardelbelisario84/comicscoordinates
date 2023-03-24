@@ -3,29 +3,7 @@ import { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 
 import api from '../../service/axios'
-import {
-  BannerSubtitle,
-  BannerTitle,
-  CardCharacter,
-  CardCharacterBackground,
-  CardCharacterBody,
-  CardContent,
-  HomeBanner,
-  HomeBannerContent,
-  HomeContainer,
-  HomeContent,
-  HomeTitle,
-  ModalBody,
-  ModalBodyContent,
-  ModalContent,
-  ModalHeader,
-  ModalHeaderButton,
-  ModalTitle,
-  Pagination,
-  PaginationItem,
-  TitleComics,
-  TitleCoordinates,
-} from './style'
+import { BannerSubtitle, BannerTitle, CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, HomeBanner, HomeBannerContent, HomeContainer, HomeContent, HomeTitle, ModalBody, ModalBodyContent, ModalContent, ModalHeader, ModalHeaderButton, ModalTitle, Pagination, PaginationItem, TitleComics, TitleCoordinates } from './style'
 
 const customStyles = {
   content: {
