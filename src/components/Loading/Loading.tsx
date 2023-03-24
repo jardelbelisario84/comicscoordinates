@@ -1,9 +1,21 @@
-import { LoadingMessage } from './style'
+import ReactLoading, { LoadingType } from 'react-loading';
 
-export function Loading() {
+import { LoadingMessage } from './style';
+
+type Props = {
+  type: LoadingType | undefined
+  color: string;
+}
+
+export function Loading({ type, color }: Props) {
   return (
     <LoadingMessage>
-      <h2>Aguarde. Carregando dados... </h2>
+      <div>
+      <ReactLoading type={type} color={color} height={'30px'} width={'30px'} />
+      <h2>Aguarde. Carregando dados</h2>
+
+      </div>
+
     </LoadingMessage>
   )
 }

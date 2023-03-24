@@ -6,7 +6,6 @@ import Modal from '../../components/Modal'
 import api from '../../service/axios'
 import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, Pagination, PaginationItem } from './style'
 
-
 type ComicProps = {
   title: string;
   thumbnail: {
@@ -52,7 +51,7 @@ export default function Comics() {
   return (
     <>
       {loading ? (
-        <Loading />
+      <Loading type={"bars"} color="#fff"/>
       ) : (
         <div>
           {/* <Banner /> */}

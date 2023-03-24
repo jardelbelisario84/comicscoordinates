@@ -4,7 +4,7 @@ import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
 import { ModalCComponent } from '../../components/ModalCC'
 import api from '../../service/axios'
-import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, Pagination, PaginationItem } from './style'
+import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, ModalBody, ModalContent, ModalImage, Pagination, PaginationItem } from './style'
 
 export default function Comics() {
   const [characters, setCharacters] = useState<any>({})
@@ -40,7 +40,7 @@ export default function Comics() {
   return (
     <>
       {loading ? (
-        <Loading />
+        <Loading type={"bars"} color="#fff"/>
       ) : (
         <div>
           {/* <Banner /> */}
@@ -90,7 +90,25 @@ export default function Comics() {
             data={character}
           >
 
-            oi
+            <ModalContent>
+              <ModalImage>
+                 <img src={`${character?.thumbnail?.path}.${character?.thumbnail?.extension}`}  alt="" />
+              </ModalImage>
+              <ModalBody numberComics={character?.comics.returned}>
+                <h1>{character?.name}</h1>
+                <div>
+                  <p>{character?.description ? character?.description: "Sem descrição cadastrada."}</p>
+                </div>
+                <div>
+                  <h2>
+                     <span>Quadrinhos desse personagem</span></h2>
+                    {character?.comics?.items?.map((comic: any, key: number) => (
+                      <p key={key}>{comic?.name ? comic?.name : "Sem quadrinhos cadastrados."}</p>
+                    ))}
+                </div>
+              </ModalBody>
+            </ModalContent>
+            
           </ModalCComponent>
         )}
       </div>

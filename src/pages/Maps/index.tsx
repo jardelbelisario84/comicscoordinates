@@ -149,35 +149,21 @@ function MapsPage() {
      setInstructions(true)
   }
 
+  
+
   return (
     <>
       {isLoaded && (
         <>
           <MapContent onClick={handleClickInstructions}>
             <h1>INSTRUÇÕES</h1>
-            {/* <MapBody>
-              <div>
-                <p>1. Clique em qualquer ponto para selecionar um endereço</p>
-              </div>
-              <div>
-                <p>
-                  2. Verifique se o endereço
-                  está correto na janela POPUP que irá aparecer.
-                </p>
-              </div>
-              <div>
-                <p>
-                  3. Clique no botão "ENVIAR QUADRINHOS PARA O ENDEREÇO NO MAPA"
-                </p>
-              </div>
-            </MapBody> */}
           </MapContent>
 
           <GoogleMap
+            clickableIcons={false}
             mapContainerStyle={containerStyle}
             center={center}
             onClick={(event) => handleClickMap(event)}
-            // onUnmount={onUnmount}
             zoom={15}
             options={{
               zoomControl: true,
