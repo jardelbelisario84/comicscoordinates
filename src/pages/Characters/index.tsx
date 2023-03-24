@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { Card } from '../../components/Card'
 import { Loading } from '../../components/Loading/Loading'
@@ -40,6 +40,9 @@ type CharacterProps = {
 
 
 export default function Comics() {
+
+  const [data, setData] = useState<any>()
+  const [page, setPage] = useState(1)
   const [characters, setCharacters] = useState<CharacterProps[]>([])
   const [character, setCharacter] = useState<CharacterProps>()
   const [modal, setModal] = useState(false)
@@ -59,12 +62,27 @@ export default function Comics() {
       setLoading(true)
       const response = await api.get('/v1/public/characters')
       setCharacters(response.data.data.results)
+      setData(response.data.data)
       setLoading(false)
     } catch (error) {
       setLoading(false)
 
     }
   }
+
+  const updatePage = useCallback( async (nextPage: number) => {
+
+    try {
+      setLoading(true)
+      const pageOffset = (nextPage * 20) - 20;
+
+      const response = await api.get(`/v1/public/comics?offset=${pageOffset}`)
+      setCharacters(response.data.data.results)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+    }
+  }, []);
 
   useEffect(() => {
     getCharacters()
@@ -94,7 +112,15 @@ export default function Comics() {
               </CardContent>
             )}
 
-            <Pagination />
+            
+          <Pagination 
+              itemsPorPagina = {data?.limit}
+              totalItems = {data?.total}
+              paginate = {updatePage}
+              maxPagesVisible={7}
+              pageAction={page}
+            />
+
           
           </Container>
         </div>

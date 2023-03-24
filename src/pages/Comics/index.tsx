@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { Card } from '../../components/Card'
 import { Loading } from '../../components/Loading/Loading'
@@ -41,6 +41,8 @@ type ComicProps = {
 
 
 export default function Comics() {
+  const [data, setData] = useState<any>()
+  const [page, setPage] = useState(1)
   const [comics, setComics] = useState<ComicProps[]>([])
   const [comic, setComic] = useState<ComicProps>()
   const [modal, setModal] = useState(false)
@@ -61,15 +63,31 @@ export default function Comics() {
       setLoading(true)
       const response = await api.get('/v1/public/comics')
       setComics(response.data.data.results)
+      setData(response.data.data)
       setLoading(false)
     } catch (error) {
       setLoading(false)
     }
   }
 
+
   useEffect(() => {
     getComics()
   }, [])
+
+  const updatePage = useCallback( async (nextPage: number) => {
+
+    try {
+      setLoading(true)
+      const pageOffset = (nextPage * 20) - 20;
+
+      const response = await api.get(`/v1/publicw/comics?offset=${pageOffset}`)
+      setComics(response.data.data.results)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+    }
+  }, []);
 
   return (
     <>
@@ -77,7 +95,11 @@ export default function Comics() {
         <Loading type={"bars"} color="#fff"/>
       ) : (
         <div>
+
          <Container>
+          
+            {comics.length > 0 ? (
+              <>
             <ContainerComic>
               <h1>Listagem de Quadrinhos</h1>
               <p>
@@ -85,16 +107,27 @@ export default function Comics() {
               </p>
             </ContainerComic>
             
-            {comics.length > 0 && (
               <CardContent>
                 {comics.map((comic: any, key: number) => (
                   <Card onClick={() => openModal(comic)} data={comic} key={key}/>
-                ))}
+                  ))}
               </CardContent>
+
+              <Pagination 
+              itemsPorPagina = {data?.limit}
+              totalItems = {data?.total}
+              paginate = {updatePage}
+              maxPagesVisible={7}
+              pageAction={page}
+              />
+            </>
+
+            ): (
+              <ContainerComic>
+                <h1>Não foi encontrado nenhum resultado.</h1>
+              </ContainerComic>
             )}
 
-            <Pagination />
-          
           </Container>
         </div>
       )}
