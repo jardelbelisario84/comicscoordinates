@@ -100,27 +100,27 @@ export default function Comics() {
           
             {comics.length > 0 ? (
               <>
-            <ContainerComic>
-              <h1>Listagem de Quadrinhos</h1>
-              <p>
-                Conheça dezenas de Quadrinhos da Marvel
-              </p>
-            </ContainerComic>
-            
-              <CardContent>
-                {comics.map((comic: any, key: number) => (
-                  <Card onClick={() => openModal(comic)} data={comic} key={key}/>
-                  ))}
-              </CardContent>
+                <ContainerComic>
+                  <h1>Listagem de Quadrinhos</h1>
+                  <p>
+                    Conheça dezenas de Quadrinhos da Marvel
+                  </p>
+                </ContainerComic>
+                
+                  <CardContent>
+                    {comics.map((comic: any, key: number) => (
+                      <Card onClick={() => openModal(comic)} data={comic} key={key}/>
+                      ))}
+                  </CardContent>
 
-              <Pagination 
-              itemsPorPagina = {data?.limit}
-              totalItems = {data?.total}
-              paginate = {updatePage}
-              maxPagesVisible={7}
-              pageAction={page}
-              />
-            </>
+                  <Pagination 
+                  itemsPorPagina = {data?.limit}
+                  totalItems = {data?.total}
+                  paginate = {updatePage}
+                  maxPagesVisible={7}
+                  pageAction={page}
+                  />
+              </>
 
             ): (
               <ContainerComic>

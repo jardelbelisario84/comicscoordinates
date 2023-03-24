@@ -95,32 +95,39 @@ export default function Comics() {
       ) : (
         <div>
          <Container>
-            <ContainerCharacter>
-              <h1>Listagem de Personagens</h1>
-              <p>
-                Fique viciado em uma porção generosa de heróis e vilões da humilde
-                House of Ideas!
-              </p>
-            </ContainerCharacter>
+
+            {characters.length > 0 ? (
+              <>
+                <ContainerCharacter>
+                  <h1>Listagem de Personagens</h1>
+                  <p>
+                    Fique viciado em uma porção generosa de heróis e vilões da humilde
+                    House of Ideas!
+                  </p>
+                </ContainerCharacter>
             
-            {characters.length > 0 && (
               
-              <CardContent>
-                {characters.map((character: any, key: number) => (
-                  <Card onClick={() => openModal(character)} data={character} key={key}/>
-                ))}
-              </CardContent>
-            )}
+                <CardContent>
+                  {characters.map((character: any, key: number) => (
+                    <Card onClick={() => openModal(character)} data={character} key={key}/>
+                  ))}
+                </CardContent>
 
-            
-          <Pagination 
-              itemsPorPagina = {data?.limit}
-              totalItems = {data?.total}
-              paginate = {updatePage}
-              maxPagesVisible={7}
-              pageAction={page}
-            />
+              
+                <Pagination 
+                itemsPorPagina = {data?.limit}
+                totalItems = {data?.total}
+                paginate = {updatePage}
+                maxPagesVisible={7}
+                pageAction={page}
+                />
 
+              </>
+              ) : (
+                <ContainerCharacter>
+                  <h1>Não foi encontrado nenhum resultado.</h1>
+                </ContainerCharacter>
+              )}
           
           </Container>
         </div>
