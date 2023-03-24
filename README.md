@@ -3,7 +3,12 @@
 # Índice
 
 - [Sobre o projeto](#fenix-florestao-frontend)
-  - [Documentação](#documentacao)
+  - [Telas](#telas)
+      - [Tela Inicial](#tela-home)
+      - [Tela Quadrinhos](#tela-quadrinhos)
+      - [Tela Personagens](#tela-personagens)
+      - [Tela Mapa](#tela-maps)
+      - [Tela Histórico Endereços](#tela-historico-endereco)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Requisitos](#requisitos)
 - [Como baixar o projeto](#como-baixar-o-projeto)
@@ -11,12 +16,13 @@
 - [Como inicializar via Docker](#como-inicializar-via-docker)
 - [Subir projeto para ambiente feat via Docker](#subir-projeto-para-ambiente-feat-via-docker)
 
-# 🌲 Marvel Comic Coornidates - Frontend
+# ⍟ Marvel Comic Coornidates - Front End
 
 O projeto Marvel Comic Coordinates é um projeto feito para teste de vaga Front End. O intuito desse projeto é utilizar a API Web da Marvel e listar Quadrinhos. Mostrar dados do Quadrinho em uma janela modal e ter a possibilidade de enviar Lista de Quadrinhos para um endereço escolhido aleatoriamente no Google Maps.
 
+- Acesso oo projeto online: https://comicscoordinates.vercel.app
 
----
+
 <a id="requisitos"></a>
 
 # 📌 Requisitos
@@ -62,26 +68,16 @@ O projeto Marvel Comic Coordinates é um projeto feito para teste de vaga Front 
 <a id="como-inicializar-o-projeto-local"></a>
 ## 💻 Credenciais e chaves de acesso
 
-- Antes de tudo você
+- Antes de iniciar o projeto, verifique se possui todas as credenciais necessárias para que funcione corretamente
+
+- Google Maps Key: [Console Google](https://console.cloud.google.com/)
+- Marvel Key API: [Marvel Developer Account](https://developer.marvel.com/account)
+  - Você precisará da chave pública e privada
+
+
 - Lembre-se de ter feito o clone do projeto no passo: <a href="#como-baixar-o-projeto">Como baixar o projeto</a> ⬆️
-- Navegue até a pasta do projeto no seu computador/notebook e entre no diretório: comicscoordinates
 
-```bash
- # Go into the repository
- cd comicscoordinates
-
- # Install dependencies
- npm install
-
- # Start server dev
- npm run dev
-
-# running on http://127.0.0.1:5173 or http://localhost:5173/
-
-```
-
-
-Simples Assim, e estamos prontos para o desenvolvimento!
+Simples Assim, e estamos rodar o projeto!
 
 ---
 
@@ -104,6 +100,54 @@ As seguintes tecnologias estão sendo utilizadas neste projeto até o momento:
 - [Date fns](https://www.npmjs.com/package/date-fns)
 - [Axios](https://www.npmjs.com/package/axios)
 - [Google Maps](https://developers.google.com/maps/documentation/javascript/overview?hl=pt-br)
+
+
+
+
+<a id="telas"></a>
+## Esse projeto se divide em 5 principais telas:
+
+
+<a id="tela-home"></a>
+1. Tela inicial com banner ilustrativo
+<img src="./src/assets/Screenshot_home_page.jpg">
+
+
+---
+<a id="tela-quadrinhos"></a>
+2. Tela de listagem de quadrinhos ( comics )
+<img src="./src/assets/Screenshot_comics.jpg">
+
+2.1 Quadrinho Modal
+<img src="./src/assets/Screenshot_comic_modal.jpg">
+
+---
+<a id="tela-personagens"></a>
+3. Tela de listagem de personagens ( characters )
+
+<img src="./src/assets/Screenshot_characters.jpg">
+
+
+3.1 Personagem Modal
+<img src="./src/assets/Screenshot_comic_modal.jpg">
+
+---
+<a id="tela-maps"></a>
+4. Tela Mapa com possibilidade de marcação de endereços e envio da lista de quadrinhos 
+
+<img src="./src/assets/Screenshot_maps_instructions.jpg">
+
+4.1 Instruções Modal
+<img src="./src/assets/Screenshot_character_modal.jpg">
+
+---
+<a id="tela-historico-endereco"></a>
+5. Tela de histórico de endereços aos quais foram enviados os quadrinhos
+
+<img src="./src/assets/Screenshot_address_historic.jpg">
+
+
+---
 
 <br><br>
 
