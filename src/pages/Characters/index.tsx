@@ -94,7 +94,7 @@ export default function Comics() {
               <ModalImage>
                  <img src={`${character?.thumbnail?.path}.${character?.thumbnail?.extension}`}  alt="" />
               </ModalImage>
-              <ModalBody numberComics={character?.comics.returned}>
+              <ModalBody numberComics={character?.comics?.returned}>
                 <h1>{character?.name}</h1>
                 <div>
                   <p>{character?.description ? character?.description: "Sem descrição cadastrada."}</p>
