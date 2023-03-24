@@ -4,19 +4,14 @@ import { Modal, ModalBody, ModalContent, ModalHeader, ModalHeaderButton } from '
 type Props = {
   openModal: () => void
   closeModal: () => void
-  data: any
   title?: string
   modal: boolean
-  setModal: any
   children: any
 }
 
 export function ModalCComponent({
-  openModal,
   closeModal,
-  data,
   modal,
-  setModal,
   title,
   children,
 }: Props) {
@@ -26,7 +21,6 @@ export function ModalCComponent({
         <>
           <Modal
             isOpen={modal}
-            // onRequestClose={closeModal}
           >
             <ModalContent>
               <ModalHeader>

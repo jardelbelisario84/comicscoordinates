@@ -1,10 +1,28 @@
 import { useEffect, useState } from 'react'
 
-import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
-import Modal from '../../components/Modal'
+import { ModalCComponent } from '../../components/ModalCC'
+import { Pagination } from '../../components/Pagination'
+import { Container } from '../../components/layout/Container'
 import api from '../../service/axios'
-import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, Pagination, PaginationItem } from './style'
+import { CardComic, CardComicBackground, CardComicBody, CardContent, ContainerComic, ModalBody, ModalContent, ModalImage } from './style'
+
+
+
+type CharacterProps = {
+  name: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  description: string;
+  comics: {
+    items: [];
+    returned: number
+  }
+}
+
+
 
 type ComicProps = {
   title: string;
@@ -12,18 +30,24 @@ type ComicProps = {
     path: string;
     extension: string;
   };
+  description: string;
+  characters: {
+    items: [];
+    returned: number
+  };
   dates: []
 }
 
 
 export default function Comics() {
-  const [characters, setCharacters] = useState<ComicProps[]>([])
-  const [character, setCharacter] = useState<ComicProps | {}>({})
+  const [comics, setComics] = useState<ComicProps[]>([])
+  const [comic, setComic] = useState<ComicProps>()
   const [modal, setModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const openModal: any = (param: any) => {
-    setCharacter(param)
+    setComic(param)
+    console.log(param)
     setModal(true)
   }
 
@@ -35,9 +59,7 @@ export default function Comics() {
     try {
       setLoading(true)
       const response = await api.get('/v1/public/comics')
-      console.log(response)
-      console.log(response.data.data.results)
-      setCharacters(response.data.data.results)
+      setComics(response.data.data.results)
       setLoading(false)
     } catch (error) {
       setLoading(false)
@@ -51,50 +73,76 @@ export default function Comics() {
   return (
     <>
       {loading ? (
-      <Loading type={"bars"} color="#fff"/>
+        <Loading type={"bars"} color="#fff"/>
       ) : (
         <div>
-          {/* <Banner /> */}
-          <Container>
-            <h1>Listagem de Quadrinhos</h1>
-            <p>Vários quadrinhos para você conhecer</p>
-            {characters.length > 0 && (
+         <Container>
+            <ContainerComic>
+              <h1>Listagem de Quadrinhos</h1>
+              <p>
+                Conheça dezenas de Quadrinhos da Marvel
+              </p>
+            </ContainerComic>
+            
+            {comics.length > 0 && (
               <CardContent>
-                {characters.map((character: ComicProps, key: number) => (
-                  <CardCharacter key={key} onClick={() => openModal(character)}>
-                    <CardCharacterBackground
-                      bgCardCharacter={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                {comics.map((comic: any, key: number) => (
+                  <CardComic key={key} onClick={() => openModal(comic)}>
+                    <CardComicBackground
+                      bgCardComic={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                     />
-                    <CardCharacterBody>
-                      <h1>{character.title}</h1>
-                    </CardCharacterBody>
-                  </CardCharacter>
+                    <CardComicBody>
+                      <h1>{comic.title}</h1>
+                    </CardComicBody>
+                  </CardComic>
                 ))}
               </CardContent>
             )}
 
-            <Pagination>
-              <PaginationItem bgPagintationActive={true}>1</PaginationItem>
-              <PaginationItem>2</PaginationItem>
-              <PaginationItem>3</PaginationItem>
-              <PaginationItem>4</PaginationItem>
-              <PaginationItem>5</PaginationItem>
-              <PaginationItem>6</PaginationItem>
-              <PaginationItem>7</PaginationItem>
-              <PaginationItem>8</PaginationItem>
-            </Pagination>
+            <Pagination />
+          
           </Container>
         </div>
       )}
 
       <div>
-        {character && (
-          <Modal
+        {comic && (
+          <ModalCComponent
             openModal={openModal}
             closeModal={closeModal}
             modal={modal}
-            data={character}
-          />
+          >
+
+            
+            <ModalContent>
+              <ModalImage>
+                 <img src={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`}  alt={comic?.title} />
+              </ModalImage>
+              <ModalBody numberComics={comic?.characters?.returned}>
+                <h1>{comic?.title}</h1>
+                <div>
+                  <p>{comic?.description ? comic?.description: "Sem descrição cadastrada."}</p>
+                </div>
+                <div>
+                  <h2>
+                     <span>Personagens desse quadrinho</span></h2>
+                     {comic?.characters?.items.length > 0 ? (
+                      <div>
+                       {comic?.characters?.items?.map((character: CharacterProps, key: number) => (
+                         <p key={key}>{character?.name}</p>
+                         ))}
+                         </div>
+                       ): (
+                         <>
+                         <p>Sem personagens cadastrados até o momento.</p>
+                       </>
+
+                     )}
+                </div>
+              </ModalBody>
+            </ModalContent>
+            
+          </ModalCComponent>
         )}
       </div>
     </>

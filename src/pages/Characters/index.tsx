@@ -7,9 +7,40 @@ import { Container } from '../../components/layout/Container'
 import api from '../../service/axios'
 import { CardCharacter, CardCharacterBackground, CardCharacterBody, CardContent, ContainerCharacter, ModalBody, ModalContent, ModalImage } from './style'
 
+
+type ComicProps = {
+  name: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  description: string;
+  characters: {
+    items: [];
+    returned: number
+  };
+  dates: []
+}
+
+
+
+type CharacterProps = {
+  name: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  description: string;
+  comics: {
+    items: [];
+    returned: number
+  }
+}
+
+
 export default function Comics() {
-  const [characters, setCharacters] = useState<any>({})
-  const [character, setCharacter] = useState<any>({})
+  const [characters, setCharacters] = useState<CharacterProps[]>([])
+  const [character, setCharacter] = useState<CharacterProps>()
   const [modal, setModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -22,7 +53,7 @@ export default function Comics() {
     setModal(false)
   }
 
-  const getComics = async () => {
+  const getCharacters = async () => {
     try {
       setLoading(true)
       const response = await api.get('/v1/public/characters')
@@ -35,7 +66,7 @@ export default function Comics() {
   }
 
   useEffect(() => {
-    getComics()
+    getCharacters()
   }, [])
 
   return (
@@ -80,25 +111,35 @@ export default function Comics() {
             openModal={openModal}
             closeModal={closeModal}
             modal={modal}
-            setModal={setModal}
-            data={character}
           >
 
             <ModalContent>
               <ModalImage>
-                 <img src={`${character?.thumbnail?.path}.${character?.thumbnail?.extension}`}  alt="" />
+                 <img src={`${character?.thumbnail?.path}.${character?.thumbnail?.extension}`}  alt={character?.name} />
               </ModalImage>
               <ModalBody numberComics={character?.comics?.returned}>
                 <h1>{character?.name}</h1>
                 <div>
                   <p>{character?.description ? character?.description: "Sem descrição cadastrada."}</p>
                 </div>
+
+
                 <div>
                   <h2>
-                     <span>Quadrinhos desse personagem</span></h2>
-                    {character?.comics?.items?.map((comic: any, key: number) => (
-                      <p key={key}>{comic?.name ? comic?.name : "Sem quadrinhos cadastrados."}</p>
-                    ))}
+                    <span>Quadrinhos desse personagem</span></h2>
+                     {character?.comics?.items.length > 0 ? (
+                      <div>
+                       {character?.comics?.items?.map((comic: ComicProps, key: number) => (
+                         <p key={key}>{comic?.name}</p>
+                         ))}
+                         </div>
+                       ): (
+                         <>
+                         <p>Sem quadrinhos cadastrados até o momento.</p>
+                       </>
+
+                     )}
+
                 </div>
               </ModalBody>
             </ModalContent>

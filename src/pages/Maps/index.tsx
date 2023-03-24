@@ -195,8 +195,6 @@ function MapsPage() {
             openModal={openModal}
             closeModal={closeModal}
             modal={modal}
-            setModal={setModal}
-            data={address}
           >
             <ModalContent>
               <h1>DESEJA ENVIAR QUADRINHOS PARA O ENDEREÇO ABAIXO?</h1>
@@ -224,8 +222,6 @@ function MapsPage() {
             openModal={openModal}
             closeModal={closeModal}
             modal={modal}
-            setModal={setModal}
-            data={address}
             title="INSTRUÇÕES"
           >
             <ModalContent>
