@@ -3,8 +3,8 @@ import ReactLoading, { LoadingType } from 'react-loading';
 import { LoadingMessage } from './style';
 
 type Props = {
-  type: LoadingType | undefined
-  color: string;
+  type?: LoadingType | undefined
+  color?: string;
 }
 
 export function Loading({ type, color }: Props) {
