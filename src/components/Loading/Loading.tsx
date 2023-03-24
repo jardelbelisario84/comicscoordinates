@@ -12,7 +12,7 @@ export function Loading({ type, color }: Props) {
     <LoadingMessage>
       <div>
       <ReactLoading type={type} color={color} height={'30px'} width={'30px'} />
-      <h2>Aguarde. Carregando dados</h2>
+      <h2>Aguarde, carregando dados</h2>
 
       </div>
 
