@@ -77,6 +77,7 @@ export default function Comics() {
       const pageOffset = (nextPage * 20) - 20;
 
       const response = await api.get(`/v1/public/comics?offset=${pageOffset}`)
+      setPage(nextPage)
       setCharacters(response.data.data.results)
       setLoading(false)
     } catch (error) {

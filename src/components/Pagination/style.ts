@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type PropsPaginationItem = {
-  bgPagintationActive?: boolean;
+  bgPaginationActive?: boolean;
 };
 
 export const PaginationContainer = styled.div`
@@ -28,7 +28,7 @@ export const PaginationItem = styled.div<PropsPaginationItem>`
   height: 40px;
   border-radius: 4px;
   background-color: ${(props) =>
-    props.bgPagintationActive ? (props) => props.theme["red-900"] : (props) => props.theme["gray-500"]};
+    props.bgPaginationActive ? (props) => props.theme["red-900"] : (props) => props.theme["gray-500"]};
 
   display: flex;
   justify-content: center;

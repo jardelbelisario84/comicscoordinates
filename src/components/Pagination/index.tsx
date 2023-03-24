@@ -12,7 +12,7 @@ type Props = {
 }
 
 export function Pagination({
-  itemsPorPagina, totalItems, paginate,  maxPagesVisible, pageAction
+  itemsPorPagina, totalItems, paginate,  maxPagesVisible, pageAction = 1
 }: Props) {
 
 
@@ -23,7 +23,7 @@ export function Pagination({
 
 
   const totalPages = Math.ceil(totalItems / itemsPorPagina);
-  const lastPageInRange = Math.min(totalPages - 1, currentPage + Math.floor((maxPagesVisible - 2) / 2));
+  const lastPageInRange = Math.min(totalPages - 1, pageAction + Math.floor((maxPagesVisible - 2) / 2));
   const firstPageInRange = Math.max(2, lastPageInRange - maxPagesVisible + 3);
 
   useEffect(() => {
@@ -35,15 +35,13 @@ export function Pagination({
     }
 
     setVisiblePages(pages);
-    console.log(pageAction);
     
-  }, [currentPage, totalPages]);
+  }, [currentPage, totalPages, pageAction]);
 
   
   const handlePageClick = (pageNumber: number) => {
     setCurrentPage(pageNumber);
     paginate(pageNumber);
-    console.log(pageNumber);
   };
 
   return (
@@ -53,24 +51,31 @@ export function Pagination({
 
           <PaginationItem  
           onClick={() => handlePageClick(1)}
-          bgPagintationActive={1 === pageAction}>    
+          bgPaginationActive={1 === pageAction}>    
                 1
           </PaginationItem>
 
-          {visiblePages.map((number: number) => (
+          {visiblePages[0] !== 2 && <span>...</span>}
+          
 
+          {visiblePages.map((number: number) => (
+            <>
               <PaginationItem 
                 key={number}  
                 onClick={() => handlePageClick(number)} 
-                bgPagintationActive={number === pageAction}>    
+                bgPaginationActive={number === pageAction}>    
                 {number}
               </PaginationItem>
+            </>
 
           ))}
-          ...
+
+          
+          {visiblePages[4] !== totalPages - 1 && <span>...</span>}
+          
           <PaginationItem  
             onClick={() => handlePageClick(totalPages)}
-            bgPagintationActive={totalPages === pageAction}>    
+            bgPaginationActive={totalPages === pageAction}>    
             {totalPages}
           </PaginationItem>
              

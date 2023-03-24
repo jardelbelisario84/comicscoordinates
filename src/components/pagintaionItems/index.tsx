@@ -29,7 +29,6 @@ export function PaginatedItems({ itemsPerPage, data, comic, key, onClick }: any)
   // (This could be items from props; or items loaded in a local state
   // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
 
   
   const currentItems = items.slice(itemOffset, endOffset);
@@ -38,9 +37,7 @@ export function PaginatedItems({ itemsPerPage, data, comic, key, onClick }: any)
   // Invoke when user click to request another page.
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
+
     setItemOffset(newOffset);
   };
 

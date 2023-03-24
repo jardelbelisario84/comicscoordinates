@@ -4,7 +4,6 @@ import { memo, useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { ModalCComponent } from '../../components/ModalCC';
-import api from '../../service/axios';
 import { dateToISOString } from '../../utils/dateUtils';
 import { MapBody, MapContent, ModalButtonAction, ModalButtonCancel, ModalContent, ModalFooter } from './style';
 
@@ -25,20 +24,6 @@ function MapsPage() {
     googleMapsApiKey: `${import.meta.env.VITE_API_KEY_GOOGLE_MAPS}`,
   })
 
-  // const [, setMap] = useState(null)
-
-  // const onLoad = useCallback(function callback(map: any) {
-  //   // This is just an example of getting and using the map instance!!! don't just blindly copy!
-  //   const bounds = new window.google.maps.LatLngBounds(center)
-
-  //   map.fitBounds(bounds)
-  //   console.log('map: ', map)
-  //   setMap(map)
-  // }, [])
-
-  // const onUnmount = useCallback(function callback(map: any) {
-  //   setMap(null)
-  // }, [])
 
   const [data, setData] = useState<any>()
   const [instructions, setInstructions] = useState(false)
@@ -61,17 +46,6 @@ function MapsPage() {
     setModal(false)
   }
 
-  const getComics = async () => {
-
-   
-    try {
-      const response = await api.get('/v1/public/comics/82970')
-      setData(response.data.data.results[0])
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   const getMarkersStorages =  useCallback(() => {
     const storedArray = localStorage.getItem("address");
     if(storedArray) {    
@@ -85,7 +59,6 @@ function MapsPage() {
   },[markers])
 
   useEffect(() => {
-    getComics()
     getMarkersStorages()
   }, [])
 
@@ -108,7 +81,17 @@ function MapsPage() {
 
      setModal(true)
     } catch (error) {
-      console.log(error)
+      
+    toast.error('Erro ao marcar no mapa. Tente mais tarde.', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    })
     }
   }
 
@@ -142,9 +125,7 @@ function MapsPage() {
   }
 
 
-  const handleClickInstructions =  () => {
-   
-   
+  const handleClickInstructions =  () => { 
      setModal(true)
      setInstructions(true)
   }
@@ -190,7 +171,7 @@ function MapsPage() {
       )}
 
       <div>
-        {data && (
+        
           <ModalCComponent
             openModal={openModal}
             closeModal={closeModal}
@@ -213,7 +194,7 @@ function MapsPage() {
               </ModalFooter>
             </ModalContent>
           </ModalCComponent>
-        )}
+        
       </div>
 
       <div>
