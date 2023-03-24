@@ -2,7 +2,6 @@ import { format, parseISO } from 'date-fns'
 import { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 
-import { Loading } from '../../components/Loading/Loading'
 import api from '../../service/axios'
 import {
   BannerSubtitle,
@@ -84,7 +83,6 @@ export default function Characters() {
             Envie seus quadrinhos favoritos para um endereço no mapa
           </BannerSubtitle>
 
-          {loading && <Loading />}
         </HomeBannerContent>
       </HomeBanner>
 
