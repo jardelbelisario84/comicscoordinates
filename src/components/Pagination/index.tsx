@@ -35,6 +35,7 @@ export function Pagination({
     }
 
     setVisiblePages(pages);
+    console.log(pageAction);
     
   }, [currentPage, totalPages]);
 
@@ -42,28 +43,35 @@ export function Pagination({
   const handlePageClick = (pageNumber: number) => {
     setCurrentPage(pageNumber);
     paginate(pageNumber);
+    console.log(pageNumber);
   };
 
   return (
     <div>
-         {/* <PaginationItem bgPagintationActive={true}>{currentPage}</PaginationItem> */}
       
           <PaginationContainer>
 
-          <PaginationItem  onClick={() => handlePageClick(1)}>    
+          <PaginationItem  
+          onClick={() => handlePageClick(1)}
+          bgPagintationActive={1 === pageAction}>    
                 1
           </PaginationItem>
 
           {visiblePages.map((number: number) => (
 
-              <PaginationItem key={number}  onClick={() => handlePageClick(number)}>    
+              <PaginationItem 
+                key={number}  
+                onClick={() => handlePageClick(number)} 
+                bgPagintationActive={number === pageAction}>    
                 {number}
               </PaginationItem>
 
           ))}
           ...
-          <PaginationItem  onClick={() => handlePageClick(1)}>    
-          {totalPages}
+          <PaginationItem  
+            onClick={() => handlePageClick(totalPages)}
+            bgPagintationActive={totalPages === pageAction}>    
+            {totalPages}
           </PaginationItem>
              
           </PaginationContainer>

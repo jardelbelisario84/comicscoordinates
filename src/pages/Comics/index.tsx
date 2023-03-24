@@ -50,7 +50,6 @@ export default function Comics() {
 
   const openModal: any = (param: any) => {
     setComic(param)
-    console.log(param)
     setModal(true)
   }
 
@@ -80,7 +79,7 @@ export default function Comics() {
     try {
       setLoading(true)
       const pageOffset = (nextPage * 20) - 20;
-
+      setPage(nextPage)
       const response = await api.get(`/v1/public/comics?offset=${pageOffset}`)
       setComics(response.data.data.results)
       setLoading(false)
