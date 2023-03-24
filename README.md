@@ -135,7 +135,7 @@ As seguintes tecnologias estão sendo utilizadas neste projeto até o momento:
 <a id="tela-maps"></a>
 4. Tela Mapa com possibilidade de marcação de endereços e envio da lista de quadrinhos 
 
-<img src=".https://user-images.githubusercontent.com/14846583/227641828-5f689a60-7d05-4f88-8b3b-13ca99cc2689.jpg">
+<img src="https://user-images.githubusercontent.com/14846583/227641828-5f689a60-7d05-4f88-8b3b-13ca99cc2689.jpg">
 
 4.1 Instruções Modal
 <img src="https://user-images.githubusercontent.com/14846583/227641941-9ad7100d-2a77-499a-9d61-a4c9e6f83aad.jpg">
