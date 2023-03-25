@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import { Card } from '../../components/Card'
+import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
 import { Modal } from '../../components/Modal'
 import { Pagination } from '../../components/Pagination'
-import { Container } from '../../components/layout/Container'
 import api from '../../service/axios'
 import { CardContent, ContainerCharacter, ModalBody, ModalContent, ModalImage } from './style'
-
 
 type ComicProps = {
   name: string;
@@ -76,7 +75,7 @@ export default function Comics() {
       setLoading(true)
       const pageOffset = (nextPage * 20) - 20;
 
-      const response = await api.get(`/v1/public/comics?offset=${pageOffset}`)
+      const response = await api.get(`/v1/public/characters?offset=${pageOffset}`)
       setPage(nextPage)
       setCharacters(response.data.data.results)
       setLoading(false)
