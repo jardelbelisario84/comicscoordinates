@@ -14,8 +14,8 @@ const containerStyle = {
 }
 
 const center = {
-  lat: Number(`${import.meta.env.VITE_PUBLIC_LAT_GOOGLE_MAPS}`),
-  lng: Number(`${import.meta.env.VITE_PUBLIC_LOG_GOOGLE_MAPS}`),
+  lat: Number(`${import.meta.env.VITE_PUBLIC_LAT_GOOGLE_MAPS}`) || -23.533610585815875,
+  lng: Number(`${import.meta.env.VITE_PUBLIC_LOG_GOOGLE_MAPS}`) || -46.67203963833708,
 }
 
 function MapsPage() {
@@ -153,6 +153,7 @@ function MapsPage() {
               fullscreenControl: false,
             }}
           >
+            {/* Child components, such as markers, info windows, etc. */}
             <>
               {markers.map((marker: any, key: number) => (
                 

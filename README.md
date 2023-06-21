@@ -74,7 +74,9 @@ O projeto Marvel Comic Coordinates é um projeto feito para teste de vaga Front 
 - Marvel Key API: [Marvel Developer Account](https://developer.marvel.com/account)
   - Você precisará da chave pública e privada
 
-
+- Importante inserir os valores corretos nas variáveis do .env ( clone o .env.exemple para .env).
+  - Caso queria alterar a localização do mapa inicial, insira as coordenadas equivalentes nas variáveis do Lat e Log do .env
+  
 - Lembre-se de ter feito o clone do projeto no passo: <a href="#como-baixar-o-projeto">Como baixar o projeto</a> ⬆️
 
 Simples Assim, e estamos rodar o projeto!
