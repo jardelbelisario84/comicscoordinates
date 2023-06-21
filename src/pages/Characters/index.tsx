@@ -5,8 +5,9 @@ import { Container } from '../../components/layout/Container'
 import { Loading } from '../../components/Loading/Loading'
 import { Modal } from '../../components/Modal'
 import { Pagination } from '../../components/Pagination'
+import { Search } from '../../components/Search'
 import api from '../../service/axios'
-import { CardContent, ContainerCharacter, ModalBody, ModalContent, ModalImage } from './style'
+import { CardContent, ContainerCharacter, ModalBody, ModalContent, ModalImage, PaginationButton } from './style'
 
 type ComicProps = {
   name: string;
@@ -38,9 +39,10 @@ type CharacterProps = {
 }
 
 
-export default function Comics() {
+export default function Characters() {
 
   const [data, setData] = useState<any>()
+  const [searchQuery, setSearchQuery] = useState("")
   const [page, setPage] = useState(1)
   const [characters, setCharacters] = useState<CharacterProps[]>([])
   const [character, setCharacter] = useState<CharacterProps>()
@@ -61,6 +63,7 @@ export default function Comics() {
       setLoading(true)
       const response = await api.get('/v1/public/characters')
       setCharacters(response.data.data.results)
+     
       setData(response.data.data)
       setLoading(false)
     } catch (error) {
@@ -78,15 +81,32 @@ export default function Comics() {
       const response = await api.get(`/v1/public/characters?offset=${pageOffset}`)
       setPage(nextPage)
       setCharacters(response.data.data.results)
+      
       setLoading(false)
     } catch (error) {
       setLoading(false)
     }
   }, []);
 
+ const updateSearch = async () => {
+   try {
+      setLoading(true)
+      const response = await api.get(`/v1/public/characters?nameStartsWith=${searchQuery}`)
+      setCharacters(response.data.data.results)
+      setData(response.data.data)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+    }
+  };
   useEffect(() => {
-    getCharacters()
+      updateSearch()
+  }, [searchQuery])
+
+  useEffect(() => {
+      getCharacters()
   }, [])
+  
 
   return (
     <>
@@ -106,21 +126,42 @@ export default function Comics() {
                   </p>
                 </ContainerCharacter>
             
+                <Search 
+                  placeholderSearch='Pesquisa por personagem' 
+                  searchQuery={setSearchQuery}
+                />
               
-                <CardContent>
+                {characters.length <=1 ? (
+                  <>
+                   <CardContent>
+                   {characters.map((character: any, key: number) => (
+                     <Card onClick={() => openModal(character)} data={character} key={key}/>
+                   ))}
+                    </CardContent>
+
+                  <PaginationButton 
+                    onClick={ () =>  getCharacters() }>
+                    Listar todos
+                 </PaginationButton>
+                 </>
+                ) : (
+                  <>
+                  <CardContent>
                   {characters.map((character: any, key: number) => (
                     <Card onClick={() => openModal(character)} data={character} key={key}/>
                   ))}
-                </CardContent>
+                   </CardContent>
 
-              
-                <Pagination 
-                itemsPorPagina = {data?.limit}
-                totalItems = {data?.total}
-                paginate = {updatePage}
-                maxPagesVisible={7}
-                pageAction={page}
-                />
+            
+                  <Pagination 
+                  itemsPorPagina = {data?.limit}
+                  totalItems = {data?.total}
+                  paginate = {updatePage}
+                  maxPagesVisible={7}
+                  pageAction={page}
+                  />
+                </>
+                )}
 
               </>
               ) : (

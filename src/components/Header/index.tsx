@@ -1,11 +1,9 @@
-
 import { useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { NavLink } from 'react-router-dom'
-import { ButtonIcon, HeaderContainer, HeaderContent, HeaderContentMobile, HeaderLogo, HeaderMenuDesktop, HeaderMenuMobile } from './style'
 
 import logotipo from '../../assets/logotipo.svg'
-
+import { ButtonIcon, HeaderContainer, HeaderContent, HeaderContentMobile, HeaderLogo, HeaderMenuDesktop, HeaderMenuMobile } from './style'
 
 export function Header() {
 

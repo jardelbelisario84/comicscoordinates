@@ -48,3 +48,15 @@ export const PaginationItem = styled.div<PropsPaginationItem>`
     flex-wrap: wrap;
   }
 `;
+
+
+export const PaginationButton = styled.button`
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: 0 none;
+  background-color: ${(props) => props.theme["red-500"]};
+  color: ${(props) => props.theme["white"]};
+  cursor: pointer;
+ 
+`;

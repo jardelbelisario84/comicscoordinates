@@ -44,7 +44,7 @@ export const ModalContent = styled.div`
 
   border-radius: 8px;
   
-  z-index: 99999;
+  z-index: 999999;
   
 
   

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
+
 import { PaginationContainer, PaginationItem } from './style';
-
-
 
 type Props = {
   itemsPorPagina: any,
@@ -49,15 +48,19 @@ export function Pagination({
       
           <PaginationContainer>
 
-          <PaginationItem  
-          onClick={() => handlePageClick(1)}
-          bgPaginationActive={1 === pageAction}>    
-                1
-          </PaginationItem>
+          {totalPages > 1 && (
+          <>
+            <PaginationItem  
+            onClick={() => handlePageClick(1)}
+            bgPaginationActive={1 === pageAction}>    
+                  1
+            </PaginationItem>
 
-          {visiblePages[0] !== 2 && <span>...</span>}
+
+            {visiblePages[0] !== 2 && <span>...</span>}
+          </>
           
-
+          )}
           {visiblePages.map((number: number) => (
             <>
               <PaginationItem 
@@ -71,13 +74,17 @@ export function Pagination({
           ))}
 
           
-          {visiblePages[4] !== totalPages - 1 && <span>...</span>}
-          
-          <PaginationItem  
-            onClick={() => handlePageClick(totalPages)}
-            bgPaginationActive={totalPages === pageAction}>    
-            {totalPages}
-          </PaginationItem>
+          {totalPages > 1 && (
+
+          <>
+           {visiblePages[4] !== totalPages - 1 && <span>...</span>}
+            <PaginationItem  
+              onClick={() => handlePageClick(totalPages)}
+              bgPaginationActive={totalPages === pageAction}>    
+              {totalPages}
+            </PaginationItem>
+          </>
+          )}
              
           </PaginationContainer>
       
