@@ -6,8 +6,9 @@ import { Loading } from '../../components/Loading/Loading'
 import { Modal } from '../../components/Modal'
 import { Pagination } from '../../components/Pagination'
 import { Search } from '../../components/Search'
+import { SearchListButton } from '../../components/SearchListButton'
 import api from '../../service/axios'
-import { CardContent, ContainerCharacter, ModalBody, ModalContent, ModalImage, PaginationButton } from './style'
+import { CardContent, ContainerCharacter, ModalBody, ModalContent, ModalImage } from './style'
 
 type ComicProps = {
   name: string;
@@ -88,19 +89,24 @@ export default function Characters() {
     }
   }, []);
 
- const updateSearch = async () => {
+ const updateSearch = useCallback(async (query: string) => {
    try {
       setLoading(true)
-      const response = await api.get(`/v1/public/characters?nameStartsWith=${searchQuery}`)
-      setCharacters(response.data.data.results)
-      setData(response.data.data)
-      setLoading(false)
+      if(!query){
+        getCharacters()
+      }else{
+        const response = await api.get(`/v1/public/characters?nameStartsWith=${query}`)
+        setCharacters(response.data.data.results)
+        setData(response.data.data)
+        setLoading(false)
+      }
     } catch (error) {
       setLoading(false)
     }
-  };
+  },[searchQuery]);
+  
   useEffect(() => {
-      updateSearch()
+      updateSearch(searchQuery)
   }, [searchQuery])
 
   useEffect(() => {
@@ -130,39 +136,25 @@ export default function Characters() {
                   placeholderSearch='Pesquisa por personagem' 
                   searchQuery={setSearchQuery}
                 />
-              
-                {characters.length <=1 ? (
-                  <>
-                   <CardContent>
-                   {characters.map((character: any, key: number) => (
-                     <Card onClick={() => openModal(character)} data={character} key={key}/>
-                   ))}
-                    </CardContent>
 
-                  <PaginationButton 
-                    onClick={ () =>  getCharacters() }>
-                    Listar todos
-                 </PaginationButton>
-                 </>
-                ) : (
-                  <>
-                  <CardContent>
+                <SearchListButton onClick={() => updateSearch("")}/>
+
+                <CardContent>
                   {characters.map((character: any, key: number) => (
                     <Card onClick={() => openModal(character)} data={character} key={key}/>
                   ))}
-                   </CardContent>
+                </CardContent>
 
             
-                  <Pagination 
+                <Pagination 
                   itemsPorPagina = {data?.limit}
                   totalItems = {data?.total}
                   paginate = {updatePage}
                   maxPagesVisible={7}
                   pageAction={page}
                   />
-                </>
-                )}
 
+                 
               </>
               ) : (
                 <ContainerCharacter>

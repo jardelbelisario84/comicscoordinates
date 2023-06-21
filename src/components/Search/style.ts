@@ -5,6 +5,7 @@ export const SearchContainer = styled.div`
   max-width: 400px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -24,7 +25,7 @@ export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0;
+  margin: 20px 0 10px 0;
 `;
 
 export const SearchInput = styled.input`
@@ -36,10 +37,11 @@ export const SearchInput = styled.input`
     font-size: 0.9rem;
   }
   &:focus {
-    outline: 0 none;
-    /* border-color: "#AB222E"; */
+    box-shadow: 0 0 10px  ${(props) => props.theme["red-900"]};
+    border: 0 none;
+    outline: 0;
     border-color: red;
-    transition-duration: 0.3s;
+    transition-duration: 0.2s;
   }
 `;
 export const SearchButton = styled.button`
@@ -50,5 +52,30 @@ export const SearchButton = styled.button`
   background-color: ${(props) => props.theme["red-500"]};
   color: ${(props) => props.theme["white"]};
   cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme["red-900"]};
+  }
+
+  &:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+  }
  
 `;
+export const ButtonSearchResult = styled.button`
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: transparent;
+  color: ${(props) => props.theme["red-500"]};
+  font-size: 0.9rem;
+  cursor: pointer;
+  
+  &:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+  }
+`;
+

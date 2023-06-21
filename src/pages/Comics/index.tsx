@@ -6,6 +6,7 @@ import { Loading } from '../../components/Loading/Loading'
 import { Modal } from '../../components/Modal'
 import { Pagination } from '../../components/Pagination'
 import { Search } from '../../components/Search'
+import { SearchListButton } from '../../components/SearchListButton'
 import api from '../../service/axios'
 import { CardContent, ContainerComic, ModalBody, ModalContent, ModalImage } from './style'
 
@@ -58,25 +59,38 @@ export default function Comics() {
   }
 
 
-
-  const updateSearch = async () => {
-   
+  const getComics = async () => {
     try {
       setLoading(true)
-      const response = await api.get(`/v1/public/comics?titleStartsWith=${searchQuery}`)
+      const response = await api.get('/v1/public/comics')
       setComics(response.data.data.results)
       setData(response.data.data)
       setLoading(false)
     } catch (error) {
       setLoading(false)
     }
-  };
-  
-  useEffect(() => {
-    if(searchQuery){
-      updateSearch()
-    }
-  }, [searchQuery])
+  }
+
+
+ const updateSearch = useCallback(async (query: string) => {
+  try {
+     setLoading(true)
+     if(!query){
+       getComics()
+     }else{
+      const response = await api.get(`/v1/public/comics?titleStartsWith=${searchQuery}`)
+      setComics(response.data.data.results)
+       setData(response.data.data)
+       setLoading(false)
+     }
+   } catch (error) {
+     setLoading(false)
+   }
+ },[searchQuery]);
+ 
+ useEffect(() => {
+     updateSearch(searchQuery)
+ }, [searchQuery])
   
 
   const updatePage = useCallback( async (nextPage: number) => {
@@ -95,17 +109,7 @@ export default function Comics() {
 
 
   
-  const getComics = async () => {
-    try {
-      setLoading(true)
-      const response = await api.get('/v1/public/comics')
-      setComics(response.data.data.results)
-      setData(response.data.data)
-      setLoading(false)
-    } catch (error) {
-      setLoading(false)
-    }
-  }
+
 
 
   useEffect(() => {
@@ -135,6 +139,7 @@ export default function Comics() {
                     searchQuery={setSearchQuery}
                   />
                 
+                <SearchListButton onClick={() => updateSearch("")}/>
                 
                   <CardContent>
                     {comics.map((comic: any, key: number) => (
@@ -149,6 +154,8 @@ export default function Comics() {
                   maxPagesVisible={7}
                   pageAction={page}
                   />
+
+                  
               </>
 
             ): (

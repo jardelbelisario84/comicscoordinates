@@ -6,6 +6,9 @@ type PropsBgCardCharacter = {
   bgCardCharacter: string;
 };
 
+
+
+
 export const PaginationButton = styled.button`
   padding: 10px 20px;
   border-radius: 5px;
@@ -105,6 +108,7 @@ export const CardCharacterBody = styled.div`
   }
 `;
 
+
 export const ModalContent = styled.div`
   width: 100%;
   height: 400px;
@@ -160,6 +164,9 @@ export const ModalImage = styled.div`
       height: 100%;
     }
   }
+
+
+
 
   @media (min-width: 32rem) and (max-width: 48rem) {
     height: 90%;
