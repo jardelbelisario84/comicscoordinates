@@ -159,6 +159,7 @@ export default function Characters() {
               ) : (
                 <ContainerCharacter>
                   <h1>Não foi encontrado nenhum resultado.</h1>
+                  <SearchListButton onClick={() => updateSearch("")}/>
                 </ContainerCharacter>
               )}
           

@@ -161,6 +161,7 @@ export default function Comics() {
             ): (
               <ContainerComic>
                 <h1>Não foi encontrado nenhum resultado.</h1>
+                <SearchListButton onClick={() => updateSearch("")}/>
               </ContainerComic>
             )}
 
