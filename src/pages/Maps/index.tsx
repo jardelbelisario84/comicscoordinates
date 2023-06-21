@@ -69,7 +69,8 @@ function MapsPage() {
     setMarkerPointer({lat, lng})
     try {
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${import.meta.env.VITE_API_KEY_GOOGLE_MAPS}`,
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAbm-M5r8u_jznJ1AZy7j0GhHl3zv4JmAQ`,
+        // `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${import.meta.env.VITE_API_KEY_GOOGLE_MAPS}`,
       )
       
       setAddress(response.data.results[0].formatted_address)
